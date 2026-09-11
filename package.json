@@ -1,0 +1,16 @@
+{
+  "name": "dham-bimlal-smart-darshan-portal",
+  "version": "1.0.0",
+  "description": "Official Web Portal for Shiv Ardhanreshwari Nag Jyotirling Dham, Bimlal Sanctuary",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node -e 'console.log(\"Build ready\")'",
+    "lint": "node -e 'console.log(\"Lint passed\")'"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

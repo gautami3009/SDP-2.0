@@ -1,0 +1,8 @@
+{
+  "name": "Shiv Ardhanreshwari Nag Jyotirling Dham Portal",
+  "description": "Official Web Portal for Shiv Ardhanreshwari Nag Jyotirling Dham, Bimlal Sanctuary in Dang, Gujarat with Smart Darshan, Mandir Information, Seva, and Pilgrim Guidance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
