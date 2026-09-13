@@ -1,0 +1,340 @@
+/**
+ * Shree Shiv Ardhanreshwari Nag Jyotirling Dham, Bimlal Sanctuary
+ * Official Devotional Design System & Sacred Atmosphere Styling
+ * 
+ * OFFICIAL COLOR PALETTE ARCHITECTURE:
+ * - Primary Gold / Vibrant Yellow: #FFD700 (Sacred light, highlights, selected states, subtle glow, accents)
+ * - Deep Maroon: #800020 (Primary brand depth, navigation, major headings, strong sections, key UI)
+ * - Saffron Orange: #FF8C00 (Primary action accents, CTA emphasis, active states, spiritual warmth)
+ * - Warm Ivory / Temple Stone / Parchment: #FAF6EE / #FFFDF8 / #F5EFEB (Neutral grounding)
+ * 
+ * All palette tokens are defined as CSS Custom Properties (:root) so they can be swapped globally.
+ */
+
+:root {
+  /* --- 1. Official Core Palette Tokens --- */
+  --temple-gold: #FFD700;              /* Primary Gold / Vibrant Yellow · Sacred Light & Highlights */
+  --temple-gold-light: #FFF275;        /* Diya Warm Golden Radiance */
+  --temple-gold-dark: #CCA800;         /* Antique Brass Inscription */
+  --temple-gold-glow: rgba(255, 215, 0, 0.40); /* Divine Light Glow */
+  
+  --temple-primary: #800020;           /* Deep Sacred Maroon · Brand Depth & Headings */
+  --temple-primary-deep: #5A0016;      /* Ancient Sanctum Wall Maroon */
+  --temple-primary-dark: #38000E;      /* Garbhagriha Midnight Chamber */
+  
+  --temple-saffron: #FF8C00;           /* Saffron Orange · Spiritual Warmth & Primary CTA */
+  --temple-saffron-deep: #E67E00;      /* Aarti Flame Accent */
+  --temple-saffron-soft: rgba(255, 140, 0, 0.14);
+  
+  --temple-ivory: #FAF6EE;             /* Pure Marble Sanctum Warm Ivory */
+  --temple-cream: #FFFDF8;             /* Warm Temple Sandstone & Parchment */
+  --temple-surface: #FFFFFF;           /* Card & Elevation Surface */
+  --temple-surface-low: #F5EFEB;       /* Subtle Recessed Container */
+  
+  --temple-border: rgba(255, 215, 0, 0.45); /* Sacred Golden Hairline Border */
+  --temple-border-maroon: rgba(128, 0, 32, 0.22);
+  --temple-border-subtle: rgba(214, 206, 190, 0.60);
+  
+  --temple-text-main: #1C1917;         /* Deep Stone Charcoal Body */
+  --temple-text-muted: #57534E;        /* Muted Earth Body Text */
+  --temple-text-light: #78716C;        /* Stone Inscription Caption */
+  
+  --temple-forest: #1B3B2B;            /* Sacred Dang Forest Teak */
+  --temple-forest-deep: #11251B;       /* Ancient Bimlal Canopy */
+
+  /* --- Spacing & Container Tokens --- */
+  --container-max: 1240px;
+  --container-pad: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* --- Devotional Typography System --- */
+.font-devotional-title {
+  font-family: 'Noto Serif Devanagari', 'Cinzel', 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.font-devotional-body {
+  font-family: 'Mukta', 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif;
+  line-height: 1.72;
+}
+
+.font-vedic-mantra {
+  font-family: 'Noto Serif Devanagari', 'Rozha One', 'Playfair Display', serif;
+  letter-spacing: 0.04em;
+}
+
+/* --- Container & Layout System --- */
+.temple-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+  box-sizing: border-box;
+}
+
+.temple-section {
+  width: 100%;
+  padding-top: clamp(4rem, 8vw, 6.5rem);
+  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* --- Divine Light & Diya Flame System --- */
+.diya-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 26px;
+  height: 26px;
+}
+
+.diya-flame {
+  width: 11px;
+  height: 18px;
+  background: radial-gradient(ellipse at bottom, #FFF2A7 0%, var(--temple-gold) 45%, var(--temple-saffron) 85%, transparent 100%);
+  border-radius: 50% 50% 35% 35% / 60% 60% 40% 40%;
+  transform-origin: center bottom;
+  animation: diya-breathe 3.5s infinite ease-in-out;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.85));
+}
+
+@keyframes diya-breathe {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.94;
+    filter: drop-shadow(0 0 7px rgba(255, 215, 0, 0.75));
+  }
+  30% {
+    transform: scale(1.08, 0.95) rotate(-1.5deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 11px rgba(255, 140, 0, 0.9));
+  }
+  70% {
+    transform: scale(0.96, 1.05) rotate(1.5deg);
+    opacity: 0.90;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+  }
+}
+
+.diya-glow {
+  position: absolute;
+  inset: -14px;
+  background: radial-gradient(circle, var(--temple-gold-glow) 0%, transparent 70%);
+  pointer-events: none;
+  border-radius: 50%;
+  animation: diya-glow-pulse 4s infinite ease-in-out;
+}
+
+@keyframes diya-glow-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.18); opacity: 1; }
+}
+
+/* --- Divine Light Accent Classes --- */
+.divine-light-glow {
+  box-shadow: 0 0 24px var(--temple-gold-glow);
+}
+
+.divine-border-glow {
+  border-color: var(--temple-gold);
+  box-shadow: 0 0 12px var(--temple-gold-glow);
+}
+
+/* --- Sacred Hairlines, Dividers & Ornaments --- */
+.temple-hairline {
+  border-color: var(--temple-border);
+}
+
+.sacred-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem auto;
+  max-width: 280px;
+}
+
+.sacred-divider::before,
+.sacred-divider::after {
+  content: '';
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, var(--temple-gold), transparent);
+}
+
+.sacred-mandala-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--temple-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--temple-gold);
+}
+
+/* --- Temple Architectural Elevation Cards --- */
+.temple-card {
+  background: var(--temple-surface);
+  border: 1px solid var(--temple-border);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px rgba(128, 0, 32, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.temple-card:hover {
+  border-color: var(--temple-gold);
+  box-shadow: 0 10px 32px rgba(128, 0, 32, 0.10), 0 0 16px var(--temple-gold-glow);
+  transform: translateY(-2px);
+}
+
+/* --- Devotional Badge & Chip --- */
+.temple-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid var(--temple-gold);
+  color: var(--temple-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* --- Primary Devotional CTA Button (Saffron Orange Accent with Gold Highlight) --- */
+.btn-temple-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--temple-saffron) 0%, var(--temple-saffron-deep) 100%);
+  color: #FFFFFF !important;
+  border: 1px solid var(--temple-gold);
+  border-radius: 9999px;
+  padding: 0.75rem 1.85rem;
+  font-family: 'Mukta', 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(255, 140, 0, 0.35);
+  text-decoration: none;
+}
+
+.btn-temple-primary:hover {
+  background: linear-gradient(135deg, #FFA024 0%, var(--temple-saffron) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(255, 140, 0, 0.50), 0 0 12px var(--temple-gold-glow);
+}
+
+/* --- Secondary Devotional Button (Deep Maroon Outline) --- */
+.btn-temple-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--temple-primary) !important;
+  border: 1.5px solid var(--temple-primary);
+  border-radius: 9999px;
+  padding: 0.75rem 1.85rem;
+  font-family: 'Mukta', 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-temple-secondary:hover {
+  background: rgba(128, 0, 32, 0.08);
+  border-color: var(--temple-primary-deep);
+  transform: translateY(-2px);
+}
+
+/* --- Elder Mode Text Enlargement --- */
+body.elder-mode-active {
+  font-size: 1.25rem !important;
+  line-height: 1.85 !important;
+}
+
+body.elder-mode-active p,
+body.elder-mode-active span,
+body.elder-mode-active li,
+body.elder-mode-active a {
+  font-size: 1.15em !important;
+}
+
+body.elder-mode-active h1 {
+  font-size: 2.75rem !important;
+}
+
+body.elder-mode-active h2 {
+  font-size: 2.25rem !important;
+}
+
+body.elder-mode-active .btn-temple-primary,
+body.elder-mode-active .btn-temple-secondary {
+  padding: 1.1rem 2.2rem !important;
+  font-size: 1.15rem !important;
+}
+
+/* --- Verified Digital Pass Card Styles --- */
+.pass-verified-border {
+  border: 2px dashed var(--temple-gold);
+  position: relative;
+}
+
+.pass-verified-border::before,
+.pass-verified-border::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  background-color: var(--temple-cream);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  border: 1px solid var(--temple-gold);
+  z-index: 10;
+}
+
+.pass-verified-border::before { left: -13px; }
+.pass-verified-border::after { right: -13px; }
+
+/* --- Toast Notification --- */
+#devotee-toast {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+#devotee-toast.toast-hidden {
+  transform: translateY(120%) translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- Clean Print Styling --- */
+@media print {
+  body * { visibility: hidden; }
+  #bimlal-darshan-pass-card,
+  #bimlal-darshan-pass-card * {
+    visibility: visible;
+  }
+  #bimlal-darshan-pass-card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    border: 2px solid #800020 !important;
+    box-shadow: none !important;
+  }
+}
