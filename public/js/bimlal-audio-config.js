@@ -10,8 +10,8 @@
  */
 
 window.BIMLAL_AUDIO_CONFIG = {
-  // Central audio file path
-  AUDIO_SOURCE: '/audio/bimlal-official-audio.mp3',
+  // Central audio file path with version cache-buster
+  AUDIO_SOURCE: '/audio/bimlal-official-audio.mp3?v=3',
   
   // Sacred title announced to screen readers and displayed subtly
   TITLE: 'Sacred Sanctum Chants · Shiv Ardhanreshwari Dham',

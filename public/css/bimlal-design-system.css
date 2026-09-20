@@ -338,3 +338,93 @@ body.elder-mode-active .btn-temple-secondary {
     box-shadow: none !important;
   }
 }
+
+/* --- Swipeable Carousel & Gallery Lightbox Enhancements --- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.gallery-carousel-track {
+  cursor: grab;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.gallery-carousel-track:active {
+  cursor: grabbing;
+}
+.gallery-slide {
+  scroll-snap-align: center;
+}
+
+/* --- Devotional Meditative Fade-In Entrance Animations --- */
+.section-header-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.section-header-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle staggered micro-motion for inner elements */
+.section-header-reveal .temple-badge {
+  display: inline-block;
+}
+
+/* --- Weather Widget Entrance Fade-in & State Transition --- */
+.weather-widget-fade {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+  will-change: opacity, transform;
+}
+
+.weather-widget-fade.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth transition when switching between loading and active states */
+.weather-transition-content {
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s ease;
+  will-change: opacity, transform, filter;
+}
+
+.weather-loading-state {
+  opacity: 0.55;
+  filter: blur(0.5px);
+  pointer-events: none;
+}
+
+.weather-active-state {
+  opacity: 1;
+  filter: blur(0px);
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-header-reveal,
+  .weather-widget-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .weather-transition-content {
+    transition: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+}
