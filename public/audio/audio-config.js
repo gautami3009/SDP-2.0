@@ -8,7 +8,7 @@
  * No UI components or page templates need to be rewritten or redesigned.
  */
 window.BIMLAL_AUDIO_CONFIG = {
-  AUDIO_SOURCE: '/audio/bimlal-official-audio.mp3',
+  AUDIO_SOURCE: '/audio/bimlal-official-audio.mp3?v=3',
   TITLE: 'कर्पूरगौरं करुणावतारं · Sacred Sanctum Chanting',
   SUBTITLE: 'Official Authentic Recording · Bimlal Sanctuary',
   PRELOAD: 'metadata',

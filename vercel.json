@@ -1,9 +1,21 @@
 {
   "version": 2,
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
+    {
+      "src": "server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "public/**",
+          "index.html",
+          "temple_trust_logo.jpg"
+        ]
+      }
+    }
   ],
   "routes": [
+    { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "server.js" }
   ]
 }
+

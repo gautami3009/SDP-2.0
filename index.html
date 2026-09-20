@@ -263,7 +263,7 @@
         
         <!-- Left: Shiva Tatva · Purusha -->
         <div class="flex flex-col justify-between p-8 rounded-2xl bg-[#FFFFFF] border border-[#C5A059]/30 shadow-sm">
-          <div>
+          <div class="section-header-reveal">
             <span data-i18n="compass_shiva_tag" class="temple-badge mb-4">
               शिव तत्व · पुरुष
             </span>
@@ -296,7 +296,7 @@
 
         <!-- Right: Shakti Tatva · Prakriti -->
         <div class="flex flex-col justify-between p-8 rounded-2xl bg-[#FFFFFF] border border-[#1B3B2B]/30 shadow-sm">
-          <div>
+          <div class="section-header-reveal">
             <span data-i18n="compass_shakti_tag" class="temple-badge !text-[#1B3B2B] !bg-[#1B3B2B]/10 !border-[#1B3B2B]/30 mb-4">
               शक्ती तत्व · प्रकृती
             </span>
@@ -336,7 +336,7 @@
   <!-- 4. DAINIK SANKALP / MANTRA                          -->
   <!-- =================================================== -->
   <section id="live-darshan" class="temple-section bg-[#FBF9F5] border-b border-[#C5A059]/30">
-    <div class="temple-container max-w-3xl text-center">
+    <div class="temple-container max-w-3xl text-center section-header-reveal">
       
       <span data-i18n="sankalp_tag" class="temple-badge mb-4">
         दैनिक संकल्प · ध्यान व नामस्मरण
@@ -357,7 +357,6 @@
       <p data-i18n="sankalp_author" class="text-xs uppercase tracking-widest text-[#792425] font-bold mb-6">
         — परमपूज्य संत स्वामी अनेकरूपी महाराज
       </p>
-
     </div>
   </section>
 
@@ -368,7 +367,7 @@
     <div class="temple-container">
       
       <!-- Section Heading -->
-      <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="text-center max-w-3xl mx-auto mb-12 section-header-reveal">
         <span data-i18n="darshan_tag" class="temple-badge mb-3">भाविकांसाठी नियम व माहिती</span>
         <h2 data-i18n="darshan_title" class="font-devotional-title text-3xl sm:text-4xl text-[#1C1917] font-bold mb-4">
           पवित्र दर्शन व्यवस्था
@@ -525,7 +524,7 @@
     <div class="temple-container max-w-4xl">
       
       <!-- Header -->
-      <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="text-center max-w-2xl mx-auto mb-10 section-header-reveal">
         <span data-i18n="booking_section_tag" class="temple-badge mb-3">डिजिटल दर्शन सुविधा</span>
         <h2 data-i18n="booking_section_title" class="font-devotional-title text-3xl sm:text-4xl text-[#792425] font-bold mb-3">
           सुलभ दर्शन नोंदणी व ई-पास
@@ -696,7 +695,7 @@
   <section id="services-section" class="temple-section bg-[#F5EFEB] border-b border-[#C5A059]/30">
     <div class="temple-container">
       
-      <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="text-center max-w-3xl mx-auto mb-12 section-header-reveal">
         <span data-i18n="seva_tag" class="temple-badge mb-3">निष्काम भक्ती व सेवा</span>
         <h2 data-i18n="seva_title" class="font-devotional-title text-3xl sm:text-4xl text-[#792425] font-bold mb-3">
           पवित्र दहा सेवा
@@ -978,7 +977,7 @@
   <section id="dham-sanctuary" class="temple-section bg-[#1B3B2B]/5 border-b border-[#1B3B2B]/20">
     <div class="temple-container">
       
-      <div class="text-center max-w-3xl mx-auto mb-12">
+      <div class="text-center max-w-3xl mx-auto mb-12 section-header-reveal">
         <span data-i18n="sanctuary_sub" class="temple-badge !text-[#1B3B2B] !bg-[#1B3B2B]/10 !border-[#1B3B2B]/30 mb-3">
           बिमलाल अभयारण्य · डांग, गुजरात
         </span>
@@ -1068,7 +1067,7 @@
         </div>
 
         <!-- Swamiji Narrative -->
-        <div class="lg:col-span-7 flex flex-col gap-4">
+        <div class="lg:col-span-7 flex flex-col gap-4 section-header-reveal">
           <span data-i18n="swamiji_tag" class="temple-badge w-fit">तपोनिधी मार्गदर्शक</span>
           <h2 data-i18n="swamiji_title" class="font-devotional-title text-3xl sm:text-4xl text-[#792425] font-bold leading-tight">
             परमपूज्य संत स्वामी अनेकरूपी महाराज
@@ -1129,56 +1128,160 @@
   </section>
 
   <!-- =================================================== -->
-  <!-- 10. GALLERY (3 APPROVED CATEGORIES)                 -->
+  <!-- 10. GALLERY (SWIPEABLE IMAGE CAROUSEL & LIGHTBOX)   -->
   <!-- =================================================== -->
   <section id="gallery" class="temple-section bg-[#F5EFEB] border-b border-[#C5A059]/30">
     <div class="temple-container">
       
-      <div class="text-center max-w-2xl mx-auto mb-12">
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 section-header-reveal">
         <span data-i18n="nav_gallery" class="temple-badge mb-3">दर्शन दालन</span>
         <h2 class="font-devotional-title text-3xl sm:text-4xl text-[#1C1917] font-bold mb-3">
-          दर्शन दालन व ऐतिहासिक संग्रह
+          दर्शन दालन व ऐतिहासिक छायाचित्रे
         </h2>
         <p class="font-devotional-body text-base text-[#57534E]">
-          बिमलाल गुहा गर्भगृह, अरण्य परिक्रमा आणि दैनंदिन महाआरतीचे पावन क्षण.
+          श्री शिव अर्धनरेश्वर गुहा गर्भगृह, तपोनिधी पूज्य स्वामीजी, आणि डांग अभयारण्यातील पावन सोहळ्याचे दुर्मिळ क्षण.
+        </p>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-6" role="tablist" aria-label="Gallery Categories">
+          <button type="button" 
+                  data-filter="all" 
+                  onclick="window.BimlalGallery.filterCategory('all')" 
+                  class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-bold transition-all shadow-sm bg-[#792425] text-white border border-[#792425]">
+            सर्व छायाचित्रे (All)
+          </button>
+          <button type="button" 
+                  data-filter="mandir" 
+                  onclick="window.BimlalGallery.filterCategory('mandir')" 
+                  class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-[#57534E] border border-[#C5A059]/40 hover:border-[#792425] hover:text-[#792425]">
+            मंदिर व गर्भगृह (Mandir)
+          </button>
+          <button type="button" 
+                  data-filter="swamiji" 
+                  onclick="window.BimlalGallery.filterCategory('swamiji')" 
+                  class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-[#57534E] border border-[#C5A059]/40 hover:border-[#792425] hover:text-[#792425]">
+            पूज्य स्वामीजी (Swamiji)
+          </button>
+          <button type="button" 
+                  data-filter="utsav" 
+                  onclick="window.BimlalGallery.filterCategory('utsav')" 
+                  class="gallery-filter-btn px-4 py-2 rounded-full text-xs font-bold transition-all bg-white text-[#57534E] border border-[#C5A059]/40 hover:border-[#792425] hover:text-[#792425]">
+            उत्सव व सोहळा (Utsav)
+          </button>
+        </div>
+      </div>
+
+      <!-- Carousel Frame with Controls -->
+      <div class="relative max-w-5xl mx-auto">
+        
+        <!-- Controls Bar Above Carousel -->
+        <div class="flex items-center justify-between px-2 mb-3 text-xs text-[#78716C] font-semibold">
+          <div class="inline-flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#C5A059]/30 text-[#792425]">
+              <span class="material-symbols-outlined text-[16px]">swipe</span>
+              <span class="hidden sm:inline">डावीकडे/उजवीकडे स्वाइप करा</span>
+              <span class="sm:hidden">स्वाइप करा</span>
+            </span>
+          </div>
+
+          <!-- Slide Counter & Nav Chevrons -->
+          <div class="flex items-center gap-3">
+            <span id="gallery-slide-counter" class="font-bold text-sm text-[#792425] px-2 py-0.5 rounded bg-white border border-[#C5A059]/30">
+              १ / ८
+            </span>
+            <div class="flex items-center gap-1.5">
+              <button type="button" 
+                      id="gallery-prev-btn" 
+                      class="w-10 h-10 rounded-full bg-white border border-[#C5A059] text-[#792425] hover:bg-[#792425] hover:text-white flex items-center justify-center shadow-md transition-all cursor-pointer active:scale-95" 
+                      aria-label="Previous Slide">
+                <span class="material-symbols-outlined text-[22px]">chevron_left</span>
+              </button>
+              <button type="button" 
+                      id="gallery-next-btn" 
+                      class="w-10 h-10 rounded-full bg-white border border-[#C5A059] text-[#792425] hover:bg-[#792425] hover:text-white flex items-center justify-center shadow-md transition-all cursor-pointer active:scale-95" 
+                      aria-label="Next Slide">
+                <span class="material-symbols-outlined text-[22px]">chevron_right</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swipeable Carousel Track Container -->
+        <div id="gallery-carousel-track" 
+             class="gallery-carousel-track flex overflow-x-auto no-scrollbar gap-4 sm:gap-6 py-2 px-1 focus:outline-none select-none"
+             tabindex="0"
+             aria-label="Swipeable Devotional Photos Carousel">
+          <!-- Populated dynamically by window.BimlalGallery.renderCarouselSlides() -->
+        </div>
+
+        <!-- Pagination Dots Indicator -->
+        <div id="gallery-dots-container" class="flex items-center justify-center gap-2 mt-6 py-2" aria-label="Slide Indicators">
+          <!-- Populated dynamically -->
+        </div>
+
+      </div>
+
+      <!-- Quick Hint Footer for Devotees -->
+      <div class="mt-8 text-center">
+        <p class="text-xs text-[#78716C] inline-flex items-center gap-2 bg-white/70 px-4 py-2 rounded-full border border-[#C5A059]/30">
+          <span class="material-symbols-outlined text-[16px] text-[#C5A059]">photo_camera</span>
+          <span>कोणत्याही छायाचित्रावर टॅप करून पूर्ण स्क्रीन (HD Zoom) स्वरूपात दर्शन घ्या.</span>
         </p>
       </div>
 
-      <!-- 3 Authentic Visual Cards Matching Client Categories -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Category 1: Mandir Sohala -->
-        <div class="temple-card rounded-2xl overflow-hidden group bg-white border border-[#C5A059]/30">
-          <img alt="Authentic Temple Sanctum and Shikhar" class="w-full h-64 object-contain bg-[#FBF9F5] p-2 group-hover:scale-105 transition-transform duration-500" src="/images/banner_extracted_4.jpeg">
-          <div class="p-4 bg-white border-t border-[#C5A059]/20">
-            <span data-i18n="gallery_cat_sohala" class="text-xs font-bold text-primary block">
-              मंदिर उत्सव व सोहळा छायाचित्रे
-            </span>
-          </div>
+    </div>
+
+    <!-- Devotional Lightbox Modal -->
+    <div id="gallery-lightbox-modal" 
+         class="fixed inset-0 z-50 hidden bg-[#1C1917]/95 backdrop-blur-md items-center justify-center p-3 sm:p-6"
+         role="dialog" 
+         aria-modal="true" 
+         aria-label="Expanded Image View">
+      
+      <!-- Close Button -->
+      <button type="button" 
+              onclick="window.BimlalGallery.closeLightbox()"
+              class="absolute top-4 right-4 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all border border-white/20 cursor-pointer"
+              aria-label="Close Lightbox">
+        <span class="material-symbols-outlined text-[26px]">close</span>
+      </button>
+
+      <!-- Lightbox Prev Button -->
+      <button type="button" 
+              onclick="window.BimlalGallery.lightboxPrev()"
+              class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-[#792425] text-white flex items-center justify-center transition-all border border-white/20 shadow-xl active:scale-95 cursor-pointer"
+              aria-label="Previous Image">
+        <span class="material-symbols-outlined text-[28px]">chevron_left</span>
+      </button>
+
+      <!-- Lightbox Next Button -->
+      <button type="button" 
+              onclick="window.BimlalGallery.lightboxNext()"
+              class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-[#792425] text-white flex items-center justify-center transition-all border border-white/20 shadow-xl active:scale-95 cursor-pointer"
+              aria-label="Next Image">
+        <span class="material-symbols-outlined text-[28px]">chevron_right</span>
+      </button>
+
+      <!-- Modal Content Area -->
+      <div class="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center p-2">
+        <div class="relative max-h-[70vh] flex items-center justify-center overflow-hidden rounded-xl border border-[#C5A059]/40 bg-black/40 shadow-2xl">
+          <img id="lightbox-image" 
+               src="" 
+               alt="" 
+               class="max-w-full max-h-[68vh] w-auto h-auto object-contain select-none" />
         </div>
 
-        <!-- Category 2: News Album -->
-        <div class="temple-card rounded-2xl overflow-hidden group bg-white border border-[#C5A059]/30">
-          <img alt="Shree Shiv Ardhanarishwara Divine Form" class="w-full h-64 object-contain bg-[#FBF9F5] p-2 group-hover:scale-105 transition-transform duration-500" src="/images/banner_extracted_2.jpeg">
-          <div class="p-4 bg-white border-t border-[#C5A059]/20">
-            <span data-i18n="gallery_cat_news" class="text-xs font-bold text-primary block">
-              वृत्तपत्र व माध्यम वार्ता संग्रह
-            </span>
+        <!-- Lightbox Caption Banner -->
+        <div class="w-full max-w-2xl mt-4 px-5 py-3.5 rounded-xl bg-[#2B0C0D]/90 border border-[#C5A059]/40 text-center text-white backdrop-blur-sm shadow-xl">
+          <div class="flex items-center justify-center gap-2 mb-1">
+            <span id="lightbox-badge" class="px-2.5 py-0.5 rounded-full bg-[#C5A059] text-[#1C1917] text-[11px] font-bold"></span>
+            <span id="lightbox-counter" class="text-xs text-[#E2D1A6] font-semibold"></span>
           </div>
+          <h4 id="lightbox-title" class="font-devotional-title text-base sm:text-lg font-bold text-[#FFD700]"></h4>
+          <p id="lightbox-caption" class="font-devotional-body text-xs sm:text-sm text-white/85 mt-0.5 leading-relaxed"></p>
         </div>
-
-        <!-- Category 3: Mandir Past & Present -->
-        <div class="temple-card rounded-2xl overflow-hidden group bg-white border border-[#C5A059]/30">
-          <img alt="Mathadhipati Param Pujya Sant Swami Anekarupiji Maharaj" class="w-full h-64 object-contain bg-[#FBF9F5] p-2 group-hover:scale-105 transition-transform duration-500" src="/images/banner_extracted_8.jpeg">
-          <div class="p-4 bg-white border-t border-[#C5A059]/20">
-            <span data-i18n="gallery_cat_past_present" class="text-xs font-bold text-primary block">
-              मंदिराचा ऐतिहासिक प्रवास: भूतकाळ व वर्तमान
-            </span>
-          </div>
-        </div>
-
       </div>
-
     </div>
   </section>
 
@@ -1188,13 +1291,15 @@
   <section id="events" class="temple-section bg-[#FBF9F5] border-b border-[#C5A059]/30">
     <div class="temple-container max-w-5xl text-center">
       
-      <span data-i18n="calendar_tag" class="temple-badge mb-3">पवित्र धार्मिक दिनदर्शिका</span>
-      <h2 data-i18n="calendar_title" class="font-devotional-title text-3xl sm:text-4xl text-[#792425] font-bold mb-3">
-        वार्षिक पावन उत्सव व सोहळे
-      </h2>
-      <p data-i18n="calendar_desc" class="font-devotional-body text-base text-[#57534E] mb-10 max-w-3xl mx-auto">
-        बिमलाल धामात वर्षभरात साजरे होणारे शास्त्रोक्त पावन उत्सव, महापर्व आणि अखंड वैदिक अनुष्ठान परंपरा.
-      </p>
+      <div class="section-header-reveal max-w-3xl mx-auto mb-10">
+        <span data-i18n="calendar_tag" class="temple-badge mb-3">पवित्र धार्मिक दिनदर्शिका</span>
+        <h2 data-i18n="calendar_title" class="font-devotional-title text-3xl sm:text-4xl text-[#792425] font-bold mb-3">
+          वार्षिक पावन उत्सव व सोहळे
+        </h2>
+        <p data-i18n="calendar_desc" class="font-devotional-body text-base text-[#57534E]">
+          बिमलाल धामात वर्षभरात साजरे होणारे शास्त्रोक्त पावन उत्सव, महापर्व आणि अखंड वैदिक अनुष्ठान परंपरा.
+        </p>
+      </div>
 
       <!-- Mahashivratri Mahaparva Spotlight (Dignified Feature Card - Zero Fabricated Dates) -->
       <div class="mb-12 text-left bg-gradient-to-br from-[#800020]/10 via-[#FDFBF7] to-[#C5A059]/15 border-2 border-[#800020]/30 rounded-2xl p-6 sm:p-8 shadow-sm">
@@ -1355,7 +1460,7 @@
       <!-- =================================================== -->
       <div class="bg-[#F5EFEB] border border-[#C5A059]/40 rounded-2xl p-6 sm:p-8 text-left shadow-sm">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#C5A059]/30">
-          <div>
+          <div class="section-header-reveal">
             <span data-i18n="news_section_tag" class="temple-badge mb-2">अधिकृत सूचना व वार्ता</span>
             <h3 data-i18n="news_section_title" class="font-devotional-title text-2xl font-bold text-[#792425]">
               मंदिर वार्ता व सूचना फलक
@@ -1429,7 +1534,7 @@
   <section id="niyamavali" class="temple-section bg-[#F5EFEB] border-b border-[#C5A059]/30">
     <div class="temple-container max-w-5xl">
       
-      <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="text-center max-w-2xl mx-auto mb-12 section-header-reveal">
         <span data-i18n="niyamavali_tag" class="temple-badge mb-3">पावित्र्य व शिस्त</span>
         <h2 data-i18n="niyamavali_title" class="font-devotional-title text-3xl sm:text-4xl text-[#1C1917] font-bold mb-3">
           मंदिराची आचारसंहिता व नियम
@@ -1519,7 +1624,7 @@
   <section id="travel-guide" class="temple-section bg-[#FBF9F5] border-b border-[#C5A059]/30">
     <div class="temple-container max-w-5xl">
       
-      <div class="text-center max-w-2xl mx-auto mb-12">
+      <div class="text-center max-w-2xl mx-auto mb-12 section-header-reveal">
         <span data-i18n="travel_tag" class="temple-badge mb-3">प्रवास व संपर्क</span>
         <h2 data-i18n="travel_title" class="font-devotional-title text-3xl sm:text-4xl text-[#1C1917] font-bold mb-3">
           बिमलाल धामात कसे पोहोचावे?
@@ -1527,6 +1632,89 @@
         <p data-i18n="travel_desc" class="font-devotional-body text-base text-[#57534E]">
           सह्याद्री पर्वताच्या कुशीत वसलेले बिमलाल धाम आहवा आणि सापुतारा जवळ स्थित आहे.
         </p>
+      </div>
+
+      <!-- Dang Sanctuary Microclimate Weather Widget -->
+      <div id="dang-weather-widget" class="mb-10 max-w-4xl mx-auto rounded-2xl bg-white border border-[#C5A059]/35 shadow-xs overflow-hidden weather-widget-fade transition-all">
+        <!-- Top Bar: Location & Status -->
+        <div class="px-5 py-3 bg-[#F5EFEB] border-b border-[#C5A059]/25 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-bold bg-[#1B3B2B]/10 text-[#1B3B2B] border border-[#1B3B2B]/20">
+              <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+              <span data-i18n="weather_badge">सद्यस्थिती · डांग अभयारण्य</span>
+            </span>
+            <span class="text-[#78716C] hidden sm:inline">|</span>
+            <span class="text-[#57534E] font-medium" data-i18n="weather_elevation">उंची ४६३ मी. (सह्याद्री)</span>
+          </div>
+
+          <div class="flex items-center gap-3 text-[11px] text-[#78716C]">
+            <span class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">schedule</span>
+              <span data-i18n="weather_updated_at">अद्ययावत:</span>
+              <span id="bimlal-weather-timestamp" class="font-mono text-[#1C1917]">--:--</span>
+            </span>
+            <button type="button" 
+                    id="bimlal-weather-refresh-btn" 
+                    class="inline-flex items-center gap-1 px-2 py-0.5 rounded hover:bg-white text-primary font-semibold transition-colors cursor-pointer"
+                    title="हवामान ताजे करा"
+                    aria-label="हवामान ताजे करा">
+              <span id="bimlal-weather-refresh-icon" class="material-symbols-outlined text-[15px]">refresh</span>
+              <span data-i18n="weather_refresh" class="hidden xs:inline">ताजे करा</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Body: Quick Metrics & Condition -->
+        <div id="bimlal-weather-body" class="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-5 items-center weather-transition-content weather-active-state">
+          <!-- Temp & Condition (5 cols) -->
+          <div class="md:col-span-5 flex items-center gap-4 sm:pr-4 sm:border-r border-[#C5A059]/20">
+            <div class="w-14 h-14 rounded-2xl bg-[#792425]/10 border border-[#792425]/20 flex items-center justify-center text-primary flex-shrink-0">
+              <span id="bimlal-weather-icon" class="material-symbols-outlined text-[32px]">rainy</span>
+            </div>
+            <div>
+              <div class="flex items-baseline gap-2">
+                <span id="bimlal-weather-temp" class="font-devotional-title text-3xl sm:text-4xl font-bold text-[#1C1917]">25°C</span>
+                <span class="text-xs text-[#78716C]">
+                  (<span data-i18n="weather_feels_label">जाणवणारे</span> <span id="bimlal-weather-feels" class="font-semibold text-[#1C1917]">29°C</span>)
+                </span>
+              </div>
+              <p id="bimlal-weather-condition-text" class="font-devotional-title text-sm font-semibold text-primary mt-0.5">
+                हलक्या पावसाच्या सरी
+              </p>
+            </div>
+          </div>
+
+          <!-- Micro-stats (3 cols) -->
+          <div class="md:col-span-3 grid grid-cols-2 gap-2 text-xs">
+            <div class="p-2.5 rounded-xl bg-[#FBF9F5] border border-[#C5A059]/20">
+              <span class="text-[11px] text-[#78716C] block flex items-center gap-1">
+                <span class="material-symbols-outlined text-[13px] text-blue-600">humidity_mid</span>
+                <span data-i18n="weather_humidity_label">आर्द्रता</span>
+              </span>
+              <span id="bimlal-weather-humidity" class="font-bold text-[#1C1917] text-sm mt-0.5 block">92%</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#FBF9F5] border border-[#C5A059]/20">
+              <span class="text-[11px] text-[#78716C] block flex items-center gap-1">
+                <span class="material-symbols-outlined text-[13px] text-emerald-700">air</span>
+                <span data-i18n="weather_wind_label">वारा</span>
+              </span>
+              <span id="bimlal-weather-wind" class="font-bold text-[#1C1917] text-sm mt-0.5 block">10 km/h</span>
+            </div>
+          </div>
+
+          <!-- Advisory callout (4 cols) -->
+          <div class="md:col-span-4 p-3.5 rounded-xl bg-[#FFFDF5] border border-amber-300/60 text-xs text-amber-950 flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-[20px] text-amber-600 flex-shrink-0 mt-0.5">info</span>
+            <div>
+              <span data-i18n="weather_tip_label" class="font-bold text-[11px] uppercase tracking-wider text-amber-900 block mb-0.5">
+                यात्री सूचना · डांग घाट
+              </span>
+              <p id="bimlal-weather-advisory-text" class="leading-relaxed text-[#57534E]">
+                सह्याद्रीच्या घाटात पाऊस सुरू असू शकतो. छत्री, रेनकोट व ग्रीप असलेली पादत्राणे सोबत ठेवावी.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Travel Cards Grid -->
@@ -1621,21 +1809,23 @@
   <section id="trust-directory" class="temple-section bg-[#F5EFEB]">
     <div class="temple-container max-w-4xl text-center">
       
-      <span data-i18n="nav_trust" class="temple-badge mb-3">विश्वस्त मंडळ व पारदर्शकता</span>
-      
-      <h2 data-i18n="donation_title" class="font-devotional-title text-3xl sm:text-4xl text-[#792425] font-bold mb-3">
-        विश्वस्त मंडळ व देणगी पारदर्शकता
-      </h2>
-      
-      <!-- Official Trust Name & Registration -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#C5A059]/40 text-primary font-bold text-xs mb-6 shadow-xs">
-        <span class="material-symbols-outlined text-[16px]">verified</span>
-        <span data-i18n="official_reg_badge">रजि नं.: E / 169 / Dang - 19/11/2014</span>
-      </div>
+      <div class="section-header-reveal max-w-2xl mx-auto">
+        <span data-i18n="nav_trust" class="temple-badge mb-3">विश्वस्त मंडळ व पारदर्शकता</span>
+        
+        <h2 data-i18n="donation_title" class="font-devotional-title text-3xl sm:text-4xl text-[#792425] font-bold mb-3">
+          विश्वस्त मंडळ व देणगी पारदर्शकता
+        </h2>
+        
+        <!-- Official Trust Name & Registration -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#C5A059]/40 text-primary font-bold text-xs mb-6 shadow-xs">
+          <span class="material-symbols-outlined text-[16px]">verified</span>
+          <span data-i18n="official_reg_badge">रजि नं.: E / 169 / Dang - 19/11/2014</span>
+        </div>
 
-      <p data-i18n="committee_status" class="font-devotional-body text-sm text-[#57534E] max-w-2xl mx-auto mb-8">
-        सदर ट्रस्ट महाराष्ट्र व गुजरात सार्वजनिक विश्वस्त व्यवस्था अधिनियम अंतर्गत कायदेशीररित्या नोंदणीकृत असून धर्मादाय आयुक्तांच्या मार्गदर्शनाखाली कार्यरत आहे.
-      </p>
+        <p data-i18n="committee_status" class="font-devotional-body text-sm text-[#57534E] max-w-2xl mx-auto mb-8">
+          सदर ट्रस्ट महाराष्ट्र व गुजरात सार्वजनिक विश्वस्त व्यवस्था अधिनियम अंतर्गत कायदेशीररित्या नोंदणीकृत असून धर्मादाय आयुक्तांच्या मार्गदर्शनाखाली कार्यरत आहे.
+        </p>
+      </div>
 
       <!-- Mandatory Fraud Warning Banner -->
       <div class="p-5 rounded-2xl bg-amber-50 border-2 border-amber-400 text-amber-900 text-xs text-left mb-8 flex items-start gap-3 shadow-xs">
@@ -1796,13 +1986,19 @@
   </div>
 
   <!-- Authentic Temple Audio Source -->
-  <audio id="bimlal-singleton-audio" src="/audio/bimlal-official-audio.mp3" preload="auto" loop></audio>
+  <audio id="bimlal-singleton-audio" preload="auto" loop playsinline>
+    <source src="/audio/bimlal-official-audio.mp3?v=3" type="audio/mpeg">
+    <source src="/audio/Bilmal%20Audio.mpeg" type="audio/mpeg">
+  </audio>
 
   <!-- Centralized Architecture Scripts -->
   <script src="/js/bimlal-audio-config.js"></script>
   <script src="/js/bimlal-audio.js"></script>
   <script src="/js/bimlal-i18n.js"></script>
   <script src="/js/bimlal-booking.js"></script>
+  <script src="/js/bimlal-gallery.js"></script>
+  <script src="/js/bimlal-scroll-animations.js"></script>
+  <script src="/js/bimlal-weather.js"></script>
 
   <!-- Interactive Logic: Audio, Mobile Menu, Elder Mode, Toast -->
   <script>

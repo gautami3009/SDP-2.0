@@ -39,15 +39,18 @@
 
     getConfig: function() {
       return window.BIMLAL_AUDIO_CONFIG || {
-        AUDIO_SOURCE: '/audio/bimlal-official-audio.mp3',
+        AUDIO_SOURCE: '/audio/bimlal-official-audio.mp3?v=2',
         TITLE: 'Sacred Sanctum Chants · Shiv Ardhanreshwari Dham',
-        PRELOAD: 'metadata',
+        PRELOAD: 'auto',
         DEFAULT_VOLUME: 0.8,
         LOOP: true
       };
     },
 
     init: function() {
+      if (this.initialized) return;
+      this.initialized = true;
+
       this.config = this.getConfig();
 
       // Retrieve or create singleton audio element
@@ -56,24 +59,21 @@
         this.audio = document.createElement('audio');
         this.audio.id = 'bimlal-singleton-audio';
         this.audio.src = this.config.AUDIO_SOURCE;
-        this.audio.preload = this.config.PRELOAD || 'metadata';
+        this.audio.preload = this.config.PRELOAD || 'auto';
         this.audio.loop = this.config.LOOP !== false;
-        this.audio.volume = typeof this.config.DEFAULT_VOLUME === 'number' ? this.config.DEFAULT_VOLUME : 0.8;
-        this.audio.crossOrigin = 'anonymous';
+        this.audio.volume = typeof this.config.DEFAULT_VOLUME === 'number' ? this.config.DEFAULT_VOLUME : 0.85;
+        this.audio.muted = false;
         document.body.appendChild(this.audio);
       } else {
         this.audio = existingAudio;
-        if (!this.audio.src || this.audio.src.indexOf(this.config.AUDIO_SOURCE) === -1) {
+        if (!this.audio.src || this.audio.src.indexOf('/audio/') === -1) {
           this.audio.src = this.config.AUDIO_SOURCE;
         }
+        this.audio.volume = typeof this.config.DEFAULT_VOLUME === 'number' ? this.config.DEFAULT_VOLUME : 0.85;
+        this.audio.muted = false;
       }
 
-      // Check stored muted preference
-      const storedMuted = sessionStorage.getItem(STORAGE_KEYS.MUTED);
-      if (storedMuted !== null) {
-        this.isMuted = storedMuted === 'true';
-        this.audio.muted = this.isMuted;
-      }
+      this.isMuted = false;
 
       // Wire native audio events
       this.audio.addEventListener('play', () => {
@@ -90,7 +90,6 @@
 
       this.audio.addEventListener('volumechange', () => {
         this.isMuted = this.audio.muted;
-        sessionStorage.setItem(STORAGE_KEYS.MUTED, this.isMuted ? 'true' : 'false');
         this.updateUI();
       });
 
@@ -99,65 +98,117 @@
       });
 
       this.audio.addEventListener('error', (e) => {
-        console.warn('[BimlalAudio] Audio loading note:', e);
+        const mediaErr = this.audio && this.audio.error;
+        console.warn('[BimlalAudio] Audio loading state notice:', mediaErr ? (mediaErr.message || mediaErr.code) : e);
+        if (this.audio && !this._hasRecovered) {
+          this._hasRecovered = true;
+          const cleanSrc = (this.config.AUDIO_SOURCE || '/audio/bimlal-official-audio.mp3').split('?')[0];
+          const freshSrc = cleanSrc + '?t=' + Date.now();
+          console.info('[BimlalAudio] Attempting audio recovery reload with fresh source:', freshSrc);
+          this.audio.src = freshSrc;
+          this.audio.load();
+        }
       });
 
       // Mount minimal sacred UI
       this.mountUI();
 
-      // Rule: When website opens, audio automatically plays, and every time it plays from starting (0:00)
-      this.audio.currentTime = 0;
-
-      const triggerAutoPlay = () => {
-        this.audio.currentTime = 0;
-        const playPromise = this.audio.play();
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            this.isPlaying = true;
-            this.updateUI();
-          }).catch(() => {
-            // If browser policy blocks sound prior to any user gesture,
-            // unlock and play from starting on the very first touch/click/scroll
-            const unlockAndPlay = () => {
-              this.audio.currentTime = 0;
-              this.audio.play().then(() => {
-                this.isPlaying = true;
-                this.updateUI();
-              }).catch(() => {});
-              ['pointerdown', 'touchstart', 'click', 'keydown', 'scroll'].forEach(evt => {
-                window.removeEventListener(evt, unlockAndPlay, true);
-              });
-            };
-            ['pointerdown', 'touchstart', 'click', 'keydown', 'scroll'].forEach(evt => {
-              window.addEventListener(evt, unlockAndPlay, { once: true, capture: true });
-            });
-          });
-        }
-      };
-
-      triggerAutoPlay();
+      // Rule: When website opens, audio automatically plays from 0:00
+      this.triggerAutoPlay();
 
       // Wire any existing audio buttons on the page
       this.syncExistingPageButtons();
     },
 
+    triggerAutoPlay: function() {
+      if (!this.audio) return;
+
+      try {
+        if (this.audio.currentTime > 0) {
+          this.audio.currentTime = 0;
+        }
+      } catch (err) {}
+
+      this.audio.muted = false;
+      if (this.audio.volume < 0.2) {
+        this.audio.volume = 0.85;
+      }
+
+      this._playPromise = this.audio.play();
+      if (this._playPromise !== undefined) {
+        this._playPromise.then(() => {
+          this._playPromise = null;
+          this.isPlaying = true;
+          this.updateUI();
+        }).catch(() => {
+          this._playPromise = null;
+          // Autoplay blocked by browser policy without user interaction.
+          // On first devotee touch/click anywhere on page, unlock and play from 0:00
+          const unlockOnGesture = (e) => {
+            const isAudioControl = e.target && (
+              e.target.closest('#bimlal-sacred-audio-player') ||
+              e.target.closest('#header-audio-toggle-btn') ||
+              e.target.closest('#hero-audio-btn') ||
+              e.target.closest('#audio-toggle-btn')
+            );
+
+            ['pointerdown', 'touchstart', 'click', 'keydown'].forEach(evt => {
+              window.removeEventListener(evt, unlockOnGesture, true);
+            });
+
+            if (!isAudioControl && !this.isPlaying) {
+              this.play();
+            }
+          };
+
+          ['pointerdown', 'touchstart', 'click', 'keydown'].forEach(evt => {
+            window.addEventListener(evt, unlockOnGesture, { capture: true, once: true });
+          });
+        });
+      }
+    },
+
     play: function() {
       if (!this.audio) return;
-      // Always play from starting
-      this.audio.currentTime = 0;
+
+      // Ensure audio is unmuted and audible
+      this.audio.muted = false;
+      this.isMuted = false;
+      if (this.audio.volume < 0.2) {
+        this.audio.volume = 0.85;
+      }
+
+      // Safe reload if audio element lost source
+      if (this.audio.error || !this.audio.src || this.audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+        const cleanSrc = (this.config.AUDIO_SOURCE || '/audio/bimlal-official-audio.mp3').split('?')[0];
+        this.audio.src = cleanSrc + '?v=' + Date.now();
+        this.audio.load();
+      }
+
+      // Safe reset to starting position
+      try {
+        if (this.audio.currentTime > 0) {
+          this.audio.currentTime = 0;
+        }
+      } catch (err) {}
+
       sessionStorage.setItem(STORAGE_KEYS.ENGAGED, 'true');
       sessionStorage.setItem(STORAGE_KEYS.STATE, 'playing');
 
-      const promise = this.audio.play();
-      if (promise !== undefined) {
-        promise.then(() => {
+      this._playPromise = this.audio.play();
+      if (this._playPromise !== undefined) {
+        this._playPromise.then(() => {
+          this._playPromise = null;
           this.isPlaying = true;
           this.updateUI();
           if (window.showDevoteeNotice) {
             window.showDevoteeNotice('Sacred Sanctum Chants Playing', 'volume_up');
           }
         }).catch((err) => {
-          console.warn('[BimlalAudio] Playback permission note:', err);
+          this._playPromise = null;
+          console.warn('[BimlalAudio] Playback note:', err);
+          this.isPlaying = false;
+          this.updateUI();
         });
       }
     },
@@ -165,12 +216,33 @@
     pause: function() {
       if (!this.audio) return;
       sessionStorage.setItem(STORAGE_KEYS.STATE, 'paused');
-      this.audio.pause();
-      this.audio.currentTime = 0; // reset to starting position
-      this.isPlaying = false;
-      this.updateUI();
-      if (window.showDevoteeNotice) {
-        window.showDevoteeNotice('Sacred Chants Paused', 'volume_off');
+
+      const doPause = () => {
+        try {
+          this.audio.pause();
+        } catch (e) {}
+        try {
+          if (this.audio.currentTime > 0) {
+            this.audio.currentTime = 0;
+          }
+        } catch (err) {}
+        this.isPlaying = false;
+        this.updateUI();
+        if (window.showDevoteeNotice) {
+          window.showDevoteeNotice('Sacred Chants Paused', 'volume_off');
+        }
+      };
+
+      if (this._playPromise) {
+        this._playPromise.then(() => {
+          this._playPromise = null;
+          doPause();
+        }).catch(() => {
+          this._playPromise = null;
+          doPause();
+        });
+      } else {
+        doPause();
       }
     },
 
@@ -186,7 +258,9 @@
       if (!this.audio) return;
       this.audio.muted = !this.audio.muted;
       this.isMuted = this.audio.muted;
-      sessionStorage.setItem(STORAGE_KEYS.MUTED, this.isMuted ? 'true' : 'false');
+      if (!this.isMuted && this.audio.volume < 0.2) {
+        this.audio.volume = 0.85;
+      }
       this.updateUI();
       if (window.showDevoteeNotice) {
         window.showDevoteeNotice(this.isMuted ? 'Sacred Audio Muted' : 'Sacred Audio Unmuted', this.isMuted ? 'volume_off' : 'volume_up');
