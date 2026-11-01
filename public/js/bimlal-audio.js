@@ -500,6 +500,13 @@
       }
 
       // 2. Synchronize Header & Hero Elements on index.html and subpages
+      const isAudible = Boolean(this.isPlaying && !this.isMuted);
+      document.body.classList.toggle('is-audio-playing', isAudible);
+      const heroAudioBar = document.getElementById('hero-audio-bar');
+      if (heroAudioBar) heroAudioBar.classList.toggle('is-audio-playing', isAudible);
+      const headerAudioBtn = document.getElementById('header-audio-toggle-btn');
+      if (headerAudioBtn) headerAudioBtn.classList.toggle('is-audio-playing', isAudible);
+
       const headerIcon = document.getElementById('header-audio-icon');
       const headerText = document.getElementById('header-audio-text');
       if (headerIcon) {

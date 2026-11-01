@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -9,29 +10,75 @@ const app = express();
 const PORT = 3000;
 const HOST = '0.0.0.0';
 
+app.use(express.json({ limit: '30mb' }));
+
+// Dedicated API to save authentic Gallery photographs (mandir-sohala, past-present)
+app.post('/api/gallery/upload-image', (req, res) => {
+  try {
+    const { folder, filename, base64Data } = req.body || {};
+    if (!filename || !base64Data) {
+      return res.status(400).json({ error: 'Filename and base64Data required' });
+    }
+    const safeFolder = (folder === 'past-present' || folder === 'past_present') ? 'past-present' : 'mandir-sohala';
+    const safeFilename = path.basename(filename);
+    const targetDir = path.join(__dirname, 'public', 'images', 'gallery', safeFolder);
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
+    }
+    const base64Clean = base64Data.replace(/^data:image\/\w+;base64,/, '');
+    const buffer = Buffer.from(base64Clean, 'base64');
+    fs.writeFileSync(path.join(targetDir, safeFilename), buffer);
+    return res.json({
+      success: true,
+      folder: safeFolder,
+      filename: safeFilename,
+      path: `/images/gallery/${safeFolder}/${safeFilename}`,
+      bytes: buffer.length
+    });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// Backward compatible route for sohala
+app.post('/api/gallery/upload-sohala', (req, res) => {
+  req.body.folder = 'mandir-sohala';
+  return app._router.handle(req, res);
+});
+
 // Canonical mapping of legacy or deep-link paths to section anchors
 const SECTION_REDIRECTS = {
   '/mandir-information': '/#mandir-intro',
   '/services': '/#services-section',
+  '/seva': '/#services-section',
   '/the-ten-sevas': '/#services-section',
   '/the-ten-sevas-2': '/#services-section',
+  '/pavitra-seva': '/#services-section',
   '/plan-your-darshan': '/#booking-section',
   '/darshan-suvidha': '/#darshan-journey',
   '/booking': '/#booking-section',
   '/darshan': '/#darshan-journey',
+  '/darshan-journey': '/#darshan-journey',
   '/news-and-events': '/#events',
   '/announcements': '/#events',
   '/events': '/#events',
+  '/utsav': '/#events',
   '/gallery': '/#gallery',
+  '/dalan': '/#gallery',
   '/about': '/#about-swamiji',
   '/swamiji-chronicle': '/#about-swamiji',
   '/swamiji': '/#about-swamiji',
+  '/about-swamiji': '/#about-swamiji',
   '/donation': '/#trust-directory',
+  '/dan': '/#trust-directory',
   '/seva-contribution': '/#trust-directory',
   '/trust': '/#trust-directory',
+  '/trust-directory': '/#trust-directory',
   '/contact': '/#travel-guide',
   '/visit': '/#travel-guide',
   '/travel-guide': '/#travel-guide',
+  '/travel': '/#travel-guide',
+  '/sampark': '/#travel-guide',
   '/niyamavali': '/#niyamavali',
   '/rules': '/#niyamavali',
   '/elder-mode': '/#hero',

@@ -18,25 +18,28 @@
   --temple-gold-dark: #CCA800;         /* Antique Brass Inscription */
   --temple-gold-glow: rgba(255, 215, 0, 0.40); /* Divine Light Glow */
   
-  --temple-primary: #800020;           /* Deep Sacred Maroon · Brand Depth & Headings */
+  --temple-primary: #792425;           /* Deep Sacred Maroon / Terracotta · Brand Depth & Headings */
   --temple-primary-deep: #5A0016;      /* Ancient Sanctum Wall Maroon */
-  --temple-primary-dark: #38000E;      /* Garbhagriha Midnight Chamber */
+  --temple-primary-dark: #2B0C0D;      /* Garbhagriha Midnight Chamber */
   
   --temple-saffron: #FF8C00;           /* Saffron Orange · Spiritual Warmth & Primary CTA */
-  --temple-saffron-deep: #E67E00;      /* Aarti Flame Accent */
+  --temple-saffron-deep: #D97706;      /* Aarti Flame Accent */
   --temple-saffron-soft: rgba(255, 140, 0, 0.14);
   
-  --temple-ivory: #FAF6EE;             /* Pure Marble Sanctum Warm Ivory */
-  --temple-cream: #FFFDF8;             /* Warm Temple Sandstone & Parchment */
-  --temple-surface: #FFFFFF;           /* Card & Elevation Surface */
-  --temple-surface-low: #F5EFEB;       /* Subtle Recessed Container */
+  --temple-ivory: #F7EFE0;             /* Primary Warm Sacred Temple Cream (replaces stark white/plain ivory) */
+  --temple-cream: #F7EFE0;             /* Warm Temple Sandstone & Parchment */
+  --temple-cream-alt: #F3E6D8;         /* Subtle Maroon-Tinted Sacred Cream for Alternating Sections */
+  --temple-surface: #FAF4E8;           /* Card & Elevation Warm Sacred Surface (Never plain white) */
+  --temple-surface-warm: #FAF2E4;      /* Recessed Controls, Inputs, Badges, & Chips */
+  --temple-surface-low: #F3E6D8;       /* Subtle Recessed Container */
   
-  --temple-border: rgba(255, 215, 0, 0.45); /* Sacred Golden Hairline Border */
-  --temple-border-maroon: rgba(128, 0, 32, 0.22);
+  --temple-border: rgba(212, 168, 87, 0.32); /* Subtle Gold-Tinted Hairline Border */
+  --temple-border-gold: rgba(212, 168, 87, 0.65);
+  --temple-border-maroon: rgba(121, 36, 37, 0.22);
   --temple-border-subtle: rgba(214, 206, 190, 0.60);
   
   --temple-text-main: #1C1917;         /* Deep Stone Charcoal Body */
-  --temple-text-muted: #57534E;        /* Muted Earth Body Text */
+  --temple-text-muted: #44403C;        /* Accessible Earth Body Text (WCAG AA compliant) */
   --temple-text-light: #78716C;        /* Stone Inscription Caption */
   
   --temple-forest: #1B3B2B;            /* Sacred Dang Forest Teak */
@@ -47,21 +50,79 @@
   --container-pad: clamp(1rem, 4vw, 2.5rem);
 }
 
-/* --- Devotional Typography System --- */
-.font-devotional-title {
-  font-family: 'Noto Serif Devanagari', 'Cinzel', 'Playfair Display', Georgia, serif;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
+/* --- Scroll Behavior & Anchor Offsets --- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
 }
 
-.font-devotional-body {
-  font-family: 'Mukta', 'Noto Sans Devanagari', 'Inter', system-ui, sans-serif;
-  line-height: 1.72;
+section[id],
+div[id].section-anchor-target,
+span[id].section-anchor-target {
+  scroll-margin-top: 88px;
+}
+
+/* --- Devotional Typography System --- */
+.font-devotional-title,
+h1, h2, h3, h4 {
+  font-family: 'Tiro Devanagari Hindi', 'Yatra One', 'Rozha One', 'Cinzel', 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+/* Clear heading scale step-down */
+h1, .text-3xl.sm\:text-5xl, .text-3xl.sm\:text-4xl {
+  font-family: 'Tiro Devanagari Hindi', 'Yatra One', 'Cinzel', 'Playfair Display', serif;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+  line-height: 1.28;
+  letter-spacing: 0.02em;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+}
+
+h4 {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.4;
+  letter-spacing: 0.015em;
+}
+
+.font-devotional-body,
+body,
+p,
+li,
+dd {
+  font-family: 'Noto Sans Devanagari', 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  line-height: 1.75;
+}
+
+html[lang="gu"] .font-devotional-title,
+html[lang="gu"] h1, html[lang="gu"] h2, html[lang="gu"] h3, html[lang="gu"] h4 {
+  font-family: 'Noto Serif Gujarati', 'Noto Sans Gujarati', 'Shruti', 'Gujarati Sangam MN', serif;
+}
+
+html[lang="gu"] .font-devotional-body,
+html[lang="gu"] body,
+html[lang="gu"] p,
+html[lang="gu"] li,
+html[lang="gu"] dd {
+  font-family: 'Noto Sans Gujarati', 'Gujarati MT', 'Inter', system-ui, sans-serif;
+}
+
+p {
+  line-height: 1.75 !important;
 }
 
 .font-vedic-mantra {
-  font-family: 'Noto Serif Devanagari', 'Rozha One', 'Playfair Display', serif;
+  font-family: 'Tiro Devanagari Hindi', 'Rozha One', 'Playfair Display', serif;
   letter-spacing: 0.04em;
+  line-height: 1.65;
 }
 
 /* --- Container & Layout System --- */
@@ -70,18 +131,401 @@
   max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--container-pad);
-  padding-right: var(--container-pad);
+  padding-left: clamp(1.25rem, 4vw, 2.5rem); /* Ensures safe gutter on mobile, never touching screen edges */
+  padding-right: clamp(1.25rem, 4vw, 2.5rem);
   box-sizing: border-box;
 }
 
 .temple-section {
   width: 100%;
-  padding-top: clamp(4rem, 8vw, 6.5rem);
-  padding-bottom: clamp(4rem, 8vw, 6.5rem);
+  padding-top: clamp(2.5rem, 5.5vw, 5rem); /* 40px on mobile, 80px on desktop for calm spacing */
+  padding-bottom: clamp(2.5rem, 5.5vw, 5rem);
   position: relative;
   box-sizing: border-box;
-  overflow: hidden;
+}
+
+/* Enhanced grid item spacing for Seva, Events, and Information cards */
+.grid.gap-6 {
+  gap: clamp(1.5rem, 2.5vw, 2rem) !important;
+}
+
+/* --- Step 1: Universal Elimination of Stark/Plain White Backgrounds --- */
+.bg-white,
+[class*="bg-white"],
+.bg-gray-50,
+[class*="bg-gray-50"],
+.bg-stone-50 {
+  background-color: var(--temple-surface) !important; /* #FDF8EE */
+}
+
+/* Form inputs & controls: never pure white, always sacred warm tone with subtle gold outline */
+input,
+select,
+textarea {
+  background-color: var(--temple-surface-warm) !important; /* #FAF2E4 */
+  border-color: rgba(197, 160, 89, 0.45) !important;
+  color: #1C1917 !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  background-color: var(--temple-surface) !important; /* #FDF8EE */
+  border-color: #B8860B !important;
+  box-shadow: 0 0 0 3px rgba(212, 168, 87, 0.25) !important;
+}
+
+/* Alternating Section Backgrounds (Step 2) */
+.section-cream {
+  background-color: var(--temple-cream) !important; /* #F7EFE0 */
+}
+
+.section-cream-alt {
+  background-color: var(--temple-cream-alt) !important; /* #F3E6D8 */
+}
+
+/* High-contrast text clarity on light surfaces */
+.text-\[\#57534E\] {
+  color: #44403C !important;
+}
+
+/* Ensure crisp contrast on dark background sections like Hero */
+#hero h1,
+#hero p,
+#hero .text-\[\#FBF9F5\] {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* --- Premium Traditional Indian Temple Maroon Header --- */
+#site-header {
+  background: #6B1719 !important; /* Deep Royal Temple Maroon */
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border-bottom: 2px solid rgba(197, 160, 89, 0.45) !important;
+  box-shadow: 0 4px 18px rgba(43, 12, 13, 0.35) !important;
+  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.3s ease,
+              -webkit-backdrop-filter 0.3s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease !important;
+}
+
+/* Backdrop-blur effect activated on scroll */
+#site-header.header-blurred {
+  background: rgba(107, 23, 25, 0.95) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  box-shadow: 0 4px 22px rgba(27, 6, 7, 0.45) !important;
+}
+
+/* Solidified temple maroon with illuminated 2px gold border after scrolling past hero */
+#site-header.header-past-hero,
+#site-header.header-scrolled {
+  background: rgba(80, 16, 18, 0.98) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 2px solid #C5A059 !important;
+  box-shadow: 0 4px 24px -2px rgba(197, 160, 89, 0.35), 0 4px 16px rgba(0, 0, 0, 0.45) !important;
+}
+
+#site-header nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0;
+  color: #FDF8EE;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+#site-header nav a:hover {
+  color: #FFD700 !important;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+#site-header nav a.nav-active {
+  color: #FFD700 !important;
+  font-weight: 700 !important;
+}
+
+#site-header nav a.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #FF8C00 0%, #FFD700 50%, #FF8C00 100%);
+  border-radius: 9999px;
+  box-shadow: 0 1px 6px rgba(255, 215, 0, 0.7);
+}
+
+/* Header brand styling for maroon background */
+#site-header [data-i18n="site_name"] {
+  color: #FFFDF8 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+#site-header [data-i18n="sanctuary_sub"] {
+  color: #E2D1A6 !important;
+  letter-spacing: 0.08em;
+}
+
+/* Header Utilities on Maroon */
+#site-header .lang-dropdown-trigger {
+  background: rgba(43, 12, 13, 0.65) !important;
+  border: 1.5px solid #C5A059 !important;
+  color: #FFFDF8 !important;
+}
+
+#site-header .lang-dropdown-trigger:hover {
+  border-color: #FFD700 !important;
+  background: rgba(43, 12, 13, 0.9) !important;
+}
+
+#site-header .lang-dropdown-trigger .current-lang-text {
+  color: #FFD700 !important;
+}
+
+#site-header #header-audio-toggle-btn {
+  color: #FDF8EE !important;
+  border-color: rgba(197, 160, 89, 0.45) !important;
+  background: rgba(43, 12, 13, 0.4) !important;
+}
+
+#site-header #header-audio-toggle-btn:hover {
+  border-color: #FFD700 !important;
+  color: #FFD700 !important;
+}
+
+#site-header #header-elder-mode-btn {
+  color: #FDF8EE !important;
+  border-color: rgba(197, 160, 89, 0.45) !important;
+  background: rgba(43, 12, 13, 0.4) !important;
+}
+
+#site-header #header-elder-mode-btn:hover {
+  border-color: #FFD700 !important;
+  color: #FFD700 !important;
+}
+
+#site-header #mobile-menu-toggle-btn {
+  color: #FFFDF8 !important;
+}
+
+/* Header Saffron-Gold Action Button */
+#site-header a.btn-temple-primary,
+.btn-temple-saffron {
+  background: linear-gradient(135deg, #FF8C00 0%, #E67300 50%, #C75B00 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(255, 215, 0, 0.65) !important;
+  box-shadow: 0 2px 10px rgba(255, 140, 0, 0.4) !important;
+}
+
+#site-header a.btn-temple-primary:hover,
+.btn-temple-saffron:hover {
+  background: linear-gradient(135deg, #FFA024 0%, #FF8C00 50%, #D46300 100%) !important;
+  border-color: #FFD700 !important;
+  box-shadow: 0 4px 18px rgba(255, 140, 0, 0.55), 0 0 12px rgba(255, 215, 0, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+/* Mobile Drawer under Maroon Header */
+#mobile-menu {
+  background: #501012 !important;
+  border-bottom: 2px solid #C5A059 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+}
+
+#mobile-menu a {
+  color: #FDF8EE !important;
+}
+
+#mobile-menu a:hover {
+  color: #FFD700 !important;
+}
+
+#mobile-menu [data-i18n="btn_elder_mode"] {
+  color: #FDF8EE !important;
+}
+
+/* --- Consistent Section Eyebrow Gold Label & Decorative Underline Accent --- */
+.section-eyebrow-gold {
+  display: block;
+  font-family: 'Cinzel', 'Tiro Devanagari Hindi', 'Yatra One', serif;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #B8860B;
+  text-shadow: 0 1px 2px rgba(212, 168, 87, 0.25);
+  margin-bottom: 0.35rem;
+  text-align: center;
+}
+
+.text-left .section-eyebrow-gold,
+.section-eyebrow-gold.text-left {
+  text-align: left;
+}
+
+.decorative-heading-accent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 0.65rem auto 1rem auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+.decorative-heading-accent::before,
+.decorative-heading-accent::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, #B8860B 40%, #FFD700 85%, #C5A059 100%);
+  box-shadow: 0 1px 4px rgba(212, 168, 87, 0.35);
+}
+
+.decorative-heading-accent::after {
+  background: linear-gradient(90deg, #C5A059 0%, #FFD700 15%, #B8860B 60%, transparent 100%);
+}
+
+.decorative-heading-accent .accent-glyph {
+  color: #B8860B;
+  font-size: 0.85rem;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(212, 168, 87, 0.45);
+}
+
+.temple-section h2::after,
+.section-title-gold::after {
+  display: none !important;
+}
+
+/* --- Step 2: Decorative Sacred Mandala / Lotus Background Motif (5-7% opacity) --- */
+.bg-sacred-mandala {
+  position: relative;
+}
+
+.bg-sacred-mandala::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(760px, 92vw);
+  height: min(760px, 92vw);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cg fill='none' stroke='%23C5A059' stroke-width='1.5' opacity='0.07'%3E%3Ccircle cx='300' cy='300' r='280'/%3E%3Ccircle cx='300' cy='300' r='250' stroke-dasharray='4,6'/%3E%3Ccircle cx='300' cy='300' r='220'/%3E%3Ccircle cx='300' cy='300' r='180'/%3E%3Ccircle cx='300' cy='300' r='140' stroke-dasharray='3,5'/%3E%3Ccircle cx='300' cy='300' r='100'/%3E%3Ccircle cx='300' cy='300' r='60'/%3E%3Ccircle cx='300' cy='300' r='24'/%3E%3Cline x1='300' y1='20' x2='300' y2='580'/%3E%3Cline x1='20' y1='300' x2='580' y2='300'/%3E%3Cline x1='102' y1='102' x2='498' y2='498'/%3E%3Cline x1='102' y1='498' x2='498' y2='102'/%3E%3Cpath d='M300 120 C340 180 340 240 300 300 C260 240 260 180 300 120 Z' fill='%23C5A059' fill-opacity='0.03'/%3E%3Cpath d='M300 480 C340 420 340 360 300 300 C260 360 260 420 300 480 Z' fill='%23C5A059' fill-opacity='0.03'/%3E%3Cpath d='M120 300 C180 340 240 340 300 300 C240 260 180 260 120 300 Z' fill='%23C5A059' fill-opacity='0.03'/%3E%3Cpath d='M480 300 C420 340 360 340 300 300 C360 260 420 260 480 300 Z' fill='%23C5A059' fill-opacity='0.03'/%3E%3Cpath d='M172 172 C220 210 250 250 300 300 C250 250 210 220 172 172 Z' fill='%23C5A059' fill-opacity='0.02'/%3E%3Cpath d='M428 428 C380 390 350 350 300 300 C350 350 390 380 428 428 Z' fill='%23C5A059' fill-opacity='0.02'/%3E%3Cpath d='M172 428 C220 390 250 350 300 300 C250 350 210 380 172 428 Z' fill='%23C5A059' fill-opacity='0.02'/%3E%3Cpath d='M428 172 C380 210 350 250 300 300 C350 250 390 220 428 172 Z' fill='%23C5A059' fill-opacity='0.02'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ========================================================================== */
+/* SUBTLE REPEATING WAVE-COIL DECORATIVE DIVIDER BETWEEN MAJOR HOMEPAGE SECTIONS */
+/* Architectural gold & saffron inline SVG coil-wave pattern (15-20% opacity) */
+/* ========================================================================== */
+.temple-wave-coil-divider,
+.nag-motif-divider,
+.temple-section.border-b,
+section.border-b,
+#hero,
+#navigation-compass,
+#mandir-intro,
+#live-darshan,
+#darshan-journey,
+#booking-section,
+#services-section,
+#dham-sanctuary,
+#about-swamiji,
+#gallery,
+#events,
+#niyamavali,
+#travel-guide {
+  border-bottom: none !important;
+  position: relative;
+}
+
+.temple-wave-coil-divider::after,
+.nag-motif-divider::after,
+.temple-section.border-b::after,
+section.border-b::after,
+#hero::after,
+#navigation-compass::after,
+#mandir-intro::after,
+#live-darshan::after,
+#darshan-journey::after,
+#booking-section::after,
+#services-section::after,
+#dham-sanctuary::after,
+#about-swamiji::after,
+#gallery::after,
+#events::after,
+#niyamavali::after,
+#travel-guide::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background-image: 
+    linear-gradient(90deg, transparent 0%, rgba(197, 160, 89, 0.25) 15%, rgba(197, 160, 89, 0.70) 50%, rgba(197, 160, 89, 0.25) 85%, transparent 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 18' width='60' height='18'%3E%3Cpath d='M0 9 C15 1, 15 17, 30 9 C45 1, 45 17, 60 9' fill='none' stroke='%23C5A059' stroke-width='1.4' stroke-opacity='0.18' stroke-linecap='round'/%3E%3Cpath d='M0 9 C15 17, 15 1, 30 9 C45 17, 45 1, 60 9' fill='none' stroke='%23D49B28' stroke-width='1.4' stroke-opacity='0.18' stroke-linecap='round'/%3E%3Ccircle cx='15' cy='9' r='4' fill='none' stroke='%23C5A059' stroke-width='1.2' stroke-opacity='0.16'/%3E%3Ccircle cx='45' cy='9' r='4' fill='none' stroke='%23D49B28' stroke-width='1.2' stroke-opacity='0.16'/%3E%3Ccircle cx='15' cy='9' r='1.5' fill='%23C5A059' fill-opacity='0.20'/%3E%3Ccircle cx='45' cy='9' r='1.5' fill='%23C5A059' fill-opacity='0.20'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, repeat-x;
+  background-position: center bottom, center bottom;
+  background-size: 100% 1.5px, 60px 16px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.temple-wave-coil-divider::before,
+.nag-motif-divider::before,
+.temple-section.border-b::before,
+section.border-b::before,
+#navigation-compass::before,
+#mandir-intro::before,
+#live-darshan::before,
+#darshan-journey::before,
+#booking-section::before,
+#services-section::before,
+#dham-sanctuary::before,
+#about-swamiji::before,
+#gallery::before,
+#events::before,
+#niyamavali::before,
+#travel-guide::before {
+  content: '';
+  position: absolute;
+  bottom: -3.5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 7px;
+  height: 7px;
+  background-color: #C5A059;
+  border-radius: 1px;
+  box-shadow: 0 0 6px rgba(197, 160, 89, 0.55);
+  pointer-events: none;
+  z-index: 11;
+}
+
+.wave-coil-bar,
+.nag-motif-bar {
+  display: block;
+  width: 100%;
+  max-width: 540px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 18' width='60' height='18'%3E%3Cpath d='M0 9 C15 1, 15 17, 30 9 C45 1, 45 17, 60 9' fill='none' stroke='%23C5A059' stroke-width='1.4' stroke-opacity='0.18' stroke-linecap='round'/%3E%3Cpath d='M0 9 C15 17, 15 1, 30 9 C45 17, 45 1, 60 9' fill='none' stroke='%23D49B28' stroke-width='1.4' stroke-opacity='0.18' stroke-linecap='round'/%3E%3Ccircle cx='15' cy='9' r='4' fill='none' stroke='%23C5A059' stroke-width='1.2' stroke-opacity='0.16'/%3E%3Ccircle cx='45' cy='9' r='4' fill='none' stroke='%23D49B28' stroke-width='1.2' stroke-opacity='0.16'/%3E%3Ccircle cx='15' cy='9' r='1.5' fill='%23C5A059' fill-opacity='0.20'/%3E%3Ccircle cx='45' cy='9' r='1.5' fill='%23C5A059' fill-opacity='0.20'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 60px 16px;
+  margin: 1.5rem auto;
+  pointer-events: none;
 }
 
 /* --- Divine Light & Diya Flame System --- */
@@ -176,20 +620,92 @@
   box-shadow: 0 0 8px var(--temple-gold);
 }
 
-/* --- Temple Architectural Elevation Cards --- */
-.temple-card {
-  background: var(--temple-surface);
-  border: 1px solid var(--temple-border);
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 20px rgba(128, 0, 32, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+/* --- Temple Architectural Elevation Cards & Info Boxes (Steps 3 & 4) --- */
+.temple-card,
+.bg-white.rounded-xl,
+.bg-white.rounded-2xl,
+[class*="bg-[#FAF4E8]"].rounded-xl,
+[class*="bg-[#FAF4E8]"].rounded-2xl,
+.ashram-quick-card {
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  height: 100% !important;
+  background: linear-gradient(145deg, #FFFFFF 0%, #FDFBF7 45%, #FAF4E8 100%) !important;
+  border: 1px solid rgba(197, 160, 89, 0.40) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 18px -2px rgba(121, 36, 37, 0.05), 0 2px 6px rgba(197, 160, 89, 0.06) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease !important;
   overflow: hidden;
+  will-change: transform, box-shadow;
 }
 
-.temple-card:hover {
-  border-color: var(--temple-gold);
-  box-shadow: 0 10px 32px rgba(128, 0, 32, 0.10), 0 0 16px var(--temple-gold-glow);
-  transform: translateY(-2px);
+/* Thin 2-3px Gold Gradient Border-Top (Step 3) */
+.temple-card::before,
+.bg-white.rounded-xl::before,
+.bg-white.rounded-2xl::before,
+[class*="bg-[#FAF4E8]"].rounded-xl::before,
+[class*="bg-[#FAF4E8]"].rounded-2xl::before,
+.ashram-quick-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(184, 134, 11, 0.6) 15%, #F5D77F 50%, rgba(212, 168, 87, 0.85) 85%, transparent 100%);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  transition: height 0.3s ease, background 0.3s ease;
+}
+
+/* Subtle image depth within card container */
+.temple-card img,
+.ashram-quick-card img {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Step 4: Card Hover Scale Up 1.02 & amplified gold border */
+  .temple-card:hover,
+  .bg-white.rounded-xl:hover,
+  .bg-white.rounded-2xl:hover,
+  [class*="bg-[#FAF4E8]"].rounded-xl:hover,
+  [class*="bg-[#FAF4E8]"].rounded-2xl:hover,
+  .ashram-quick-card:hover {
+    border-color: rgba(255, 215, 0, 0.85) !important;
+    box-shadow: 0 16px 36px -6px rgba(121, 36, 37, 0.16), 0 0 20px rgba(255, 215, 0, 0.25) !important;
+    transform: translateY(-5px) !important;
+  }
+
+  .temple-card:hover img,
+  .ashram-quick-card:hover img {
+    transform: scale(1.025);
+  }
+
+  .temple-card:hover::before,
+  .bg-white.rounded-xl:hover::before,
+  .bg-white.rounded-2xl:hover::before,
+  [class*="bg-[#FAF4E8]"].rounded-xl::before,
+  [class*="bg-[#FAF4E8]"].rounded-2xl::before,
+  .ashram-quick-card:hover::before {
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #B8860B 10%, #FFF275 50%, #D4A857 90%, transparent 100%);
+  }
+}
+
+.temple-card:focus-visible,
+.ashram-quick-card:focus-visible,
+a.temple-card:focus-visible {
+  outline: 2px solid #FFD700 !important;
+  outline-offset: 3px !important;
+  border-color: rgba(255, 215, 0, 0.95) !important;
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.4) !important;
 }
 
 /* --- Devotional Badge & Chip --- */
@@ -200,92 +716,132 @@
   padding: 0.35rem 0.95rem;
   border-radius: 9999px;
   background: rgba(255, 215, 0, 0.12);
-  border: 1px solid var(--temple-gold);
+  border: 1px solid #C5A059;
   color: var(--temple-primary);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-/* --- Primary Devotional CTA Button (Saffron Orange Accent with Gold Highlight) --- */
-.btn-temple-primary {
+/* --- Primary Devotional CTA Button (Saffron-Gold Gradient with Divine Radiance) --- */
+.btn-temple-primary,
+button.btn-temple-primary,
+a.btn-temple-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, var(--temple-saffron) 0%, var(--temple-saffron-deep) 100%);
+  background: linear-gradient(135deg, #FF8C00 0%, #E67300 50%, #C75B00 100%) !important;
   color: #FFFFFF !important;
-  border: 1px solid var(--temple-gold);
-  border-radius: 9999px;
-  padding: 0.75rem 1.85rem;
-  font-family: 'Mukta', 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  border: 1px solid rgba(255, 215, 0, 0.75) !important;
+  border-radius: 8px !important; /* 6-8px radius per requirement */
+  padding: 0.75rem 1.85rem !important;
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 16px rgba(255, 140, 0, 0.35);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+  box-shadow: 0 4px 16px rgba(230, 115, 0, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
   text-decoration: none;
 }
 
-.btn-temple-primary:hover {
-  background: linear-gradient(135deg, #FFA024 0%, var(--temple-saffron) 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(255, 140, 0, 0.50), 0 0 12px var(--temple-gold-glow);
+@media (prefers-reduced-motion: no-preference) {
+  .btn-temple-primary:hover,
+  button.btn-temple-primary:hover,
+  a.btn-temple-primary:hover {
+    background: linear-gradient(135deg, #FFA024 0%, #FF8C00 50%, #D46300 100%) !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 24px rgba(255, 140, 0, 0.52), 0 0 16px rgba(255, 215, 0, 0.45) !important;
+    border-color: #FFD700 !important;
+  }
+
+  /* Button Micro-interaction on click (tactile feedback scale 0.97 for 0.1s) */
+  .btn-temple-primary:active,
+  button.btn-temple-primary:active,
+  a.btn-temple-primary:active,
+  .btn-temple-secondary:active,
+  button.btn-temple-secondary:active,
+  a.btn-temple-secondary:active {
+    transform: scale(0.97) !important;
+    transition: transform 0.1s ease !important;
+  }
 }
 
-/* --- Secondary Devotional Button (Deep Maroon Outline) --- */
-.btn-temple-secondary {
+/* --- Secondary Devotional Button (Outlined Style with 6-8px Radius) --- */
+.btn-temple-secondary,
+button.btn-temple-secondary,
+a.btn-temple-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: transparent;
+  background: transparent !important;
   color: var(--temple-primary) !important;
-  border: 1.5px solid var(--temple-primary);
-  border-radius: 9999px;
-  padding: 0.75rem 1.85rem;
-  font-family: 'Mukta', 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  border: 1.5px solid var(--temple-primary) !important;
+  border-radius: 8px !important; /* 6-8px radius per requirement */
+  padding: 0.75rem 1.85rem !important;
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: transform 0.1s ease, background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease !important;
+  box-shadow: none !important;
   text-decoration: none;
 }
 
-.btn-temple-secondary:hover {
-  background: rgba(128, 0, 32, 0.08);
-  border-color: var(--temple-primary-deep);
-  transform: translateY(-2px);
+@media (prefers-reduced-motion: no-preference) {
+  .btn-temple-secondary:hover,
+  button.btn-temple-secondary:hover,
+  a.btn-temple-secondary:hover {
+    background: rgba(121, 36, 37, 0.08) !important;
+    border-color: var(--temple-primary-deep) !important;
+    color: var(--temple-primary-deep) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(121, 36, 37, 0.12) !important;
+  }
 }
 
-/* --- Elder Mode Text Enlargement --- */
+/* --- Elder Mode Text Enlargement & Tap Targets --- */
+html.elder-mode {
+  font-size: 120%;
+}
+
+body.elder-mode,
 body.elder-mode-active {
-  font-size: 1.25rem !important;
-  line-height: 1.85 !important;
+  font-size: 1.2em;
+  line-height: 1.75;
 }
 
-body.elder-mode-active p,
-body.elder-mode-active span,
-body.elder-mode-active li,
-body.elder-mode-active a {
-  font-size: 1.15em !important;
+body.elder-mode button,
+body.elder-mode a.btn-temple-primary,
+body.elder-mode a.btn-temple-secondary,
+body.elder-mode input,
+body.elder-mode select,
+body.elder-mode textarea,
+body.elder-mode-active button,
+body.elder-mode-active a.btn-temple-primary,
+body.elder-mode-active a.btn-temple-secondary,
+body.elder-mode-active input,
+body.elder-mode-active select,
+body.elder-mode-active textarea {
+  padding-top: calc(0.6rem + 4px) !important;
+  padding-bottom: calc(0.6rem + 4px) !important;
+  min-height: 48px;
 }
 
-body.elder-mode-active h1 {
-  font-size: 2.75rem !important;
+/* Button active state styling */
+.elder-mode-toggle-btn.is-active {
+  background-color: #792425 !important;
+  color: #FBF9F5 !important;
+  border-color: #792425 !important;
+  box-shadow: 0 1px 3px rgba(121, 36, 37, 0.25);
 }
-
-body.elder-mode-active h2 {
-  font-size: 2.25rem !important;
-}
-
-body.elder-mode-active .btn-temple-primary,
-body.elder-mode-active .btn-temple-secondary {
-  padding: 1.1rem 2.2rem !important;
-  font-size: 1.15rem !important;
+.elder-mode-toggle-btn.is-active span {
+  color: #FBF9F5 !important;
 }
 
 /* --- Verified Digital Pass Card Styles --- */
@@ -415,16 +971,1185 @@ body.elder-mode-active .btn-temple-secondary {
   transform: scale(1);
 }
 
+/* --- Language Switcher Dropdown & Smooth Transition --- */
+.lang-dropdown-panel {
+  background-color: #FAF4E8;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  box-shadow: 0 12px 30px -4px rgba(43, 12, 13, 0.22), 0 4px 12px -2px rgba(43, 12, 13, 0.1);
+  border-radius: 0.85rem;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.lang-dropdown-panel:not(.is-open) {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px) scale(0.98);
+}
+
+.lang-dropdown-panel.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.lang-option-item {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.lang-option-item:hover {
+  background-color: rgba(197, 160, 89, 0.18);
+  transform: translateX(4px);
+}
+
+.lang-option-item.is-active {
+  background-color: rgba(121, 36, 37, 0.1);
+  color: #792425;
+  font-weight: 700;
+}
+
+.lang-dropdown-trigger {
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.lang-dropdown-trigger:hover {
+  border-color: #792425;
+  background-color: rgba(121, 36, 37, 0.08);
+  transform: translateY(-1px);
+}
+
+.dropdown-arrow {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lang-switcher-group {
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.22s ease;
+  will-change: opacity, transform;
+}
+
+.lang-switcher-group.is-switching {
+  opacity: 0.3;
+  transform: scale(0.96);
+  filter: blur(0.4px);
+  pointer-events: none;
+}
+
+.lang-btn {
+  position: relative;
+  transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.24s ease,
+              color 0.24s ease,
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.24s ease;
+  cursor: pointer;
+  border-radius: 0.375rem;
+}
+
+.lang-btn:active {
+  transform: scale(0.93);
+}
+
+.lang-btn.lang-btn-active {
+  background-color: rgba(121, 36, 37, 0.12);
+  color: #792425;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(121, 36, 37, 0.08);
+}
+
+.lang-btn.lang-btn-inactive {
+  color: #57534E;
+  font-weight: 600;
+}
+
+.lang-btn.lang-btn-inactive:hover {
+  color: #792425;
+  background-color: rgba(121, 36, 37, 0.06);
+}
+
+/* --- Hero Banner Meditative Staggered Entrance Animations --- */
+@keyframes heroSubtleEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-entrance-logo {
+    animation: heroSubtleEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  
+  .hero-entrance-title {
+    animation: heroSubtleEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+  }
+  
+  .hero-entrance-image {
+    animation: heroSubtleEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+  }
+  
+  .hero-entrance-content {
+    animation: heroSubtleEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both;
+  }
+
+  /* --- Scroll-Reveal Fade-In System (0.6s ease-out, 20px upward motion) --- */
+  .scroll-reveal-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- Language Switch Subtle Soft Fade Transition (0.2s) --- */
+  .bimlal-i18n-swapping [data-i18n] {
+    opacity: 0.75;
+    transition: opacity 0.2s ease-out;
+  }
+  
+  [data-i18n] {
+    transition: opacity 0.2s ease-out;
+  }
+}
+
+/* --- Ashram Layout Interactive Map System --- */
+.ashram-map-canvas {
+  position: relative;
+  background-color: #F8F5EE;
+  background-image: 
+    radial-gradient(#C5A059 0.75px, transparent 0.75px),
+    linear-gradient(to right, rgba(197, 160, 89, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(197, 160, 89, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px, 48px 48px;
+  background-position: 0 0, 0 0, 0 0;
+  border-radius: 1rem;
+  border: 1.5px solid rgba(197, 160, 89, 0.4);
+  box-shadow: inset 0 2px 12px rgba(43, 12, 13, 0.04);
+}
+
+.ashram-map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.2s ease, opacity 0.25s ease;
+  z-index: 20;
+}
+
+/* Discoverability: Subtle pulse animation on non-selected map pins */
+#ashram-interactive-map .ashram-map-pin:not(.is-selected) {
+  animation: ashramPinSubtlePulse 3.2s infinite ease-in-out;
+}
+
+#ashram-interactive-map .ashram-map-pin:not(.is-selected) .ashram-pin-beacon {
+  opacity: 0.35;
+  display: block;
+  animation: ashramGentleBeaconPulse 3.2s infinite ease-in-out;
+}
+
+/* Stagger pulse timings to avoid robotic synchronization */
+#ashram-interactive-map #pin-mandir:not(.is-selected),
+#ashram-interactive-map #pin-mandir:not(.is-selected) .ashram-pin-beacon { animation-delay: 0s; }
+#ashram-interactive-map #pin-goshala:not(.is-selected),
+#ashram-interactive-map #pin-goshala:not(.is-selected) .ashram-pin-beacon { animation-delay: 0.55s; }
+#ashram-interactive-map #pin-gurukul:not(.is-selected),
+#ashram-interactive-map #pin-gurukul:not(.is-selected) .ashram-pin-beacon { animation-delay: 1.1s; }
+#ashram-interactive-map #pin-entrance:not(.is-selected),
+#ashram-interactive-map #pin-entrance:not(.is-selected) .ashram-pin-beacon { animation-delay: 1.65s; }
+#ashram-interactive-map #pin-annachhatra:not(.is-selected),
+#ashram-interactive-map #pin-annachhatra:not(.is-selected) .ashram-pin-beacon { animation-delay: 2.2s; }
+#ashram-interactive-map #pin-tapovan:not(.is-selected),
+#ashram-interactive-map #pin-tapovan:not(.is-selected) .ashram-pin-beacon { animation-delay: 2.75s; }
+
+@keyframes ashramPinSubtlePulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.055);
+  }
+}
+
+@keyframes ashramGentleBeaconPulse {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.12;
+  }
+  50% {
+    transform: scale(1.36);
+    opacity: 0.42;
+  }
+}
+
+#ashram-interactive-map .ashram-map-pin:hover {
+  transform: translate(-50%, -50%) scale(1.12);
+  z-index: 40;
+  animation-play-state: paused;
+}
+
+/* Selected pin maintains a commanding visual weight, triple-glow ring, and active beacon */
+#ashram-interactive-map .ashram-map-pin.is-selected {
+  transform: translate(-50%, -50%) scale(1.2) !important;
+  z-index: 45;
+  animation: none !important;
+}
+
+.ashram-pin-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(43, 12, 13, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.9);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+#ashram-interactive-map .ashram-map-pin.is-selected .ashram-pin-circle {
+  box-shadow: 0 0 0 3.5px #FFD700, 
+              0 0 22px rgba(255, 215, 0, 0.75), 
+              0 8px 25px rgba(121, 36, 37, 0.5) !important;
+  border-color: #FFFFFF !important;
+}
+
+.ashram-pin-beacon {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #ashram-interactive-map .ashram-map-pin.is-selected .ashram-pin-beacon {
+    opacity: 1 !important;
+    animation: ashramBeaconPulse 2s infinite ease-out !important;
+  }
+}
+
+@keyframes ashramBeaconPulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.68);
+    opacity: 0;
+  }
+}
+
+.ashram-pin-tag {
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: rgba(28, 25, 23, 0.90);
+  color: #FBF9F5;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  pointer-events: none;
+}
+
+#ashram-interactive-map .ashram-map-pin.is-selected .ashram-pin-tag {
+  background: #792425;
+  border-color: #FFD700;
+  color: #FFFFFF;
+  box-shadow: 0 3px 12px rgba(121, 36, 37, 0.4), 0 0 8px rgba(255, 215, 0, 0.35);
+}
+
+/* --- Interactive Hover Tooltips & Active State Labels over Map Pins --- */
+.ashram-pin-tooltip {
+  position: absolute;
+  bottom: calc(100% + 11px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px) scale(0.94);
+  background: rgba(43, 12, 13, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid #C5A059;
+  border-radius: 0.65rem;
+  padding: 0.45rem 0.75rem;
+  width: max-content;
+  max-width: 220px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 12px rgba(197, 160, 89, 0.25);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.22s ease;
+  z-index: 50;
+  white-space: normal;
+}
+
+.ashram-pin-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #C5A059 transparent transparent transparent;
+}
+
+.ashram-pin-tooltip-title {
+  display: block;
+  font-family: 'Yatra One', 'Cinzel', serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #FFD700;
+  line-height: 1.25;
+  margin-bottom: 2px;
+}
+
+.ashram-pin-tooltip-desc {
+  display: block;
+  font-size: 0.68rem;
+  color: #FBF9F5;
+  opacity: 0.92;
+  line-height: 1.35;
+}
+
+/* Tooltip appearance on hover, keyboard focus, and active/selected states */
+#ashram-interactive-map .ashram-map-pin:hover .ashram-pin-tooltip,
+#ashram-interactive-map .ashram-map-pin:focus-visible .ashram-pin-tooltip,
+#ashram-interactive-map .ashram-map-pin.is-selected .ashram-pin-tooltip,
+#ashram-interactive-map .ashram-map-pin.tooltip-active .ashram-pin-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+#ashram-interactive-map .ashram-map-pin.is-selected .ashram-pin-tooltip {
+  border-color: #FFD700;
+  box-shadow: 0 8px 28px rgba(121, 36, 37, 0.45), 0 0 16px rgba(255, 215, 0, 0.45);
+}
+
+#ashram-interactive-map .ashram-map-pin.is-selected .ashram-pin-tooltip::after {
+  border-color: #FFD700 transparent transparent transparent;
+}
+
+.ashram-quick-card {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.ashram-quick-card:hover {
+  transform: translateY(-2px);
+  border-color: #C5A059;
+  box-shadow: 0 4px 14px rgba(43, 12, 13, 0.08);
+}
+
+.ashram-quick-card.is-selected {
+  border-color: #792425 !important;
+  background-color: rgba(121, 36, 37, 0.04) !important;
+  box-shadow: 0 0 0 1.5px #792425, 0 6px 18px rgba(121, 36, 37, 0.12) !important;
+}
+
+.ashram-filter-btn {
+  transition: all 0.2s ease;
+}
+
+.ashram-filter-btn.is-active {
+  background-color: #792425 !important;
+  color: #FFFFFF !important;
+  border-color: #792425 !important;
+  box-shadow: 0 2px 8px rgba(121, 36, 37, 0.25);
+}
+
+/* --- Accessibility: Complete Disable of Motion for Reduced-Motion Preference --- */
 @media (prefers-reduced-motion: reduce) {
-  .section-header-reveal,
-  .weather-widget-fade {
+  .hero-entrance-logo,
+  .hero-entrance-title,
+  .hero-entrance-image,
+  .hero-entrance-content {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .scroll-reveal-item {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
-  .weather-transition-content {
+
+  .temple-card:hover,
+  .bg-white.rounded-xl:hover,
+  .bg-white.rounded-2xl:hover {
+    transform: none !important;
+  }
+
+  .btn-temple-primary:active,
+  button.btn-temple-primary:active,
+  a.btn-temple-primary:active,
+  .btn-temple-secondary:active,
+  button.btn-temple-secondary:active,
+  a.btn-temple-secondary:active {
+    transform: none !important;
+  }
+
+  .ashram-map-pin,
+  .ashram-quick-card,
+  .ashram-pin-circle {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .ashram-map-pin.is-selected {
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .ashram-pin-beacon {
+    animation: none !important;
+    display: none !important;
+  }
+
+  .section-header-reveal,
+  .weather-widget-fade,
+  .lang-switcher-group,
+  .lang-option-item,
+  .dropdown-arrow,
+  .lang-btn {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+
+  .lang-dropdown-panel:not(.is-open) {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .lang-dropdown-panel.is-open {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .weather-transition-content,
+  .weather-alert-overlay,
+  .weather-alert-pulse-ring,
+  .bimlal-i18n-swapping [data-i18n],
+  [data-i18n] {
     transition: none !important;
     filter: none !important;
     opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
   }
+}
+
+/* --- Severe Weather Alert Overlay & Banner Styling --- */
+.weather-alert-overlay {
+  animation: weatherAlertSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes weatherAlertSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.weather-alert-pulse-ring {
+  box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.65);
+  animation: alertPulseRing 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes alertPulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.weather-metric-warning {
+  border-color: rgba(220, 38, 38, 0.45) !important;
+  background-color: #FEF2F2 !important;
+  color: #991B1B !important;
+  box-shadow: 0 0 0 1px rgba(220, 38, 38, 0.25);
+}
+
+.weather-metric-warning .material-symbols-outlined {
+  color: #DC2626 !important;
+}
+
+.weather-metric-warning span.font-bold {
+  color: #991B1B !important;
+}
+
+/* --- Animated Packing Checklist Progress Indicator & Feedback --- */
+#packing-progress-fill {
+  transition: width 0.5s cubic-bezier(0.34, 1.3, 0.64, 1), background 0.4s ease, box-shadow 0.4s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+#packing-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+  animation: packingProgressShimmer 2.4s infinite;
+}
+
+@keyframes packingProgressShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%, 100% {
+    transform: translateX(100%);
+  }
+}
+
+.packing-item-card {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.packing-item-card:hover {
+  transform: translateY(-1px);
+}
+
+.packing-item-card:active {
+  transform: scale(0.99);
+}
+
+.packing-checkbox-btn {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.packing-checkbox-btn:hover {
+  transform: scale(1.08);
+}
+
+.packing-checkbox-btn:active {
+  transform: scale(0.9);
+}
+
+/* --- Temple Wave-Coil Architectural Decorative Divider --- */
+.temple-wave-coil-divider {
+  display: block;
+  width: 100%;
+  height: 22px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 20' width='60' height='20' fill='none'%3E%3Cpath d='M0,10 C7.5,1.5 22.5,1.5 30,10 C37.5,18.5 52.5,18.5 60,10' stroke='%23E08A1E' stroke-width='1.8' stroke-opacity='0.16' stroke-linecap='round'/%3E%3Cpath d='M0,10 C7.5,2 22.5,2 30,10 C37.5,18 52.5,18 60,10' stroke='%23C5A059' stroke-width='1.4' stroke-opacity='0.19' stroke-linecap='round'/%3E%3Cpath d='M15,4 C19.5,4 21,7.5 19,10 C17,12 14,10.5 14,8 C14,6.5 15.5,6 16.5,6.5' stroke='%23C5A059' stroke-width='1.2' stroke-opacity='0.18' fill='none'/%3E%3Cpath d='M45,16 C49.5,16 51,12.5 49,10 C47,8 44,9.5 44,12 C44,13.5 45.5,14 46.5,13.5' stroke='%23E08A1E' stroke-width='1.2' stroke-opacity='0.17' fill='none'/%3E%3Ccircle cx='0' cy='10' r='1.5' fill='%23C5A059' fill-opacity='0.19'/%3E%3Ccircle cx='30' cy='10' r='1.5' fill='%23E08A1E' fill-opacity='0.17'/%3E%3Ccircle cx='60' cy='10' r='1.5' fill='%23C5A059' fill-opacity='0.19'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 60px 20px;
+  position: relative;
+  margin: 0 auto;
+  pointer-events: none;
+  user-select: none;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* ========================================================= */
+/* --- SACRED TEMPLE ANIMATION SYSTEM (Micro & Macro) --- */
+/* ========================================================= */
+
+/* 1. Golden Shimmer Sweep Animation on Temple Buttons */
+.btn-temple-primary,
+.gold-shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-temple-primary::after,
+.gold-shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 45%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 75%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  animation: goldShimmerSweep 5s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes goldShimmerSweep {
+  0%, 65% {
+    left: -70%;
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    left: 160%;
+    opacity: 0;
+  }
+}
+
+/* 2. Sacred Audio Equalizer Wave Animation */
+.sacred-audio-wave {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+  width: 14px;
+  flex-shrink: 0;
+}
+
+.sacred-audio-wave .audio-bar {
+  width: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transform-origin: bottom;
+  height: 3px;
+  transition: height 0.2s ease;
+}
+
+.is-audio-playing .sacred-audio-wave .audio-bar {
+  animation: audioWaveBounce 1.2s infinite ease-in-out alternate;
+}
+
+.is-audio-playing .sacred-audio-wave .audio-bar:nth-child(1) {
+  animation-duration: 0.75s;
+  height: 10px;
+}
+.is-audio-playing .sacred-audio-wave .audio-bar:nth-child(2) {
+  animation-duration: 1.1s;
+  animation-delay: 0.15s;
+  height: 14px;
+}
+.is-audio-playing .sacred-audio-wave .audio-bar:nth-child(3) {
+  animation-duration: 0.85s;
+  animation-delay: 0.3s;
+  height: 8px;
+}
+.is-audio-playing .sacred-audio-wave .audio-bar:nth-child(4) {
+  animation-duration: 1.25s;
+  animation-delay: 0.1s;
+  height: 12px;
+}
+
+@keyframes audioWaveBounce {
+  0% { transform: scaleY(0.2); }
+  50% { transform: scaleY(1); }
+  100% { transform: scaleY(0.35); }
+}
+
+/* 3. Sacred Levitation / Floating Badge Animation */
+.sacred-float {
+  animation: sacredGentleFloat 4.5s infinite ease-in-out;
+}
+
+@keyframes sacredGentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* 4. Slow Meditative Mandala Watermark Rotation */
+.sacred-mandala-spin {
+  animation: slowMandalaSpin 140s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes slowMandalaSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 5. Live Darshan & Weather Status Ripple */
+.status-beacon-ripple {
+  position: relative;
+}
+.status-beacon-ripple::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 1.5px solid currentColor;
+  opacity: 0.8;
+  animation: beaconRipple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes beaconRipple {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+
+
+/* 7. Staggered Scroll-Reveal Cascade Delays */
+.scroll-reveal-item {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--stagger-index, 0) * 80ms);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================================================== */
+/* DIVINE LAYERED TEMPLE BACKGROUND SYSTEM (Ivory, Cream, Saffron & Gold)     */
+/* STRICTLY SCOPED TO CONTENT BELOW THE HEADER                                */
+/* ========================================================================== */
+
+/* Hero: Cinematic Temple Atmosphere with Deep Maroon, Burgundy, Saffron & Golden-Hour Lighting */
+#hero.temple-hero-layered {
+  background: radial-gradient(circle at 50% 18%, #4A1214 0%, #300A0C 45%, #1F0506 80%, #120304 100%) !important;
+  color: #FFFDF9 !important;
+  position: relative;
+  overflow: hidden;
+  min-height: 88vh;
+}
+
+#hero.temple-hero-layered h1 {
+  color: #FFFDF9 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.25) !important;
+}
+
+#hero.temple-hero-layered .hero-entrance-subtitle {
+  color: #F7EFE0 !important;
+}
+
+/* Authentic Temple Architecture Backdrop with Cinematic Golden-Hour Vignette */
+.temple-silhouette-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.temple-silhouette-backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  opacity: 0.42;
+  filter: contrast(1.18) brightness(0.85) saturate(1.25);
+  transform: scale(1.03);
+  transition: transform 10s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+#hero:hover .temple-silhouette-backdrop img {
+  transform: scale(1.07);
+}
+
+.temple-silhouette-backdrop .silhouette-vignette {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(180deg, rgba(35, 7, 8, 0.82) 0%, rgba(68, 16, 18, 0.55) 35%, rgba(121, 36, 37, 0.65) 70%, rgba(18, 4, 5, 0.95) 100%),
+    radial-gradient(circle at 50% 30%, rgba(255, 140, 0, 0.20) 0%, rgba(184, 134, 11, 0.12) 45%, transparent 75%);
+  mix-blend-mode: normal;
+}
+
+/* Cinematic Temple Hero Button Classes */
+.btn-temple-gold-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #FFD700 0%, #F5C542 50%, #D4A857 100%) !important;
+  color: #4A1012 !important;
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  border-radius: 9999px !important;
+  padding: 0.85rem 2rem !important;
+  box-shadow: 0 4px 18px rgba(255, 215, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1.5px solid #FFF275 !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-temple-gold-primary:hover {
+  background: linear-gradient(135deg, #FFF080 0%, #FFD700 50%, #E5A93C 100%) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 28px rgba(255, 215, 0, 0.55), 0 0 18px rgba(255, 242, 117, 0.6) !important;
+}
+
+.btn-temple-glass-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(43, 12, 13, 0.65) !important;
+  color: #FFFDF9 !important;
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: 9999px !important;
+  padding: 0.85rem 2rem !important;
+  border: 1.5px solid rgba(255, 215, 0, 0.65) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-temple-glass-secondary:hover {
+  background: rgba(121, 36, 37, 0.85) !important;
+  border-color: #FFD700 !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 16px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Faint Sacred Corner Ornamental Motifs */
+.sacred-corner-motif {
+  position: absolute;
+  width: clamp(70px, 10vw, 130px);
+  height: clamp(70px, 10vw, 130px);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.22;
+  color: #C5A059;
+}
+
+.sacred-corner-tl {
+  top: 12px;
+  left: 12px;
+}
+
+.sacred-corner-tr {
+  top: 12px;
+  right: 12px;
+  transform: scaleX(-1);
+}
+
+.sacred-corner-bl {
+  bottom: 12px;
+  left: 12px;
+  transform: scaleY(-1);
+}
+
+.sacred-corner-br {
+  bottom: 12px;
+  right: 12px;
+  transform: scale(-1);
+}
+
+/* Section Layer Transitions (Warm Cream, Soft Ivory, Gentle Gold & Saffron Tones) */
+.temple-layer-ivory {
+  background: linear-gradient(180deg, #FFFDF9 0%, #FDF8EE 50%, #FAF0E1 100%) !important;
+}
+
+.temple-layer-cream {
+  background: linear-gradient(180deg, #FAF0E1 0%, #F6E6D3 50%, #FAF1E2 100%) !important;
+}
+
+.temple-layer-saffron-soft {
+  background: linear-gradient(180deg, #FAF1E2 0%, #FDF5E8 50%, #FAF0DE 100%) !important;
+}
+
+.temple-layer-gold-soft {
+  background: radial-gradient(ellipse at 50% 30%, #FFFDF8 0%, #FAF2DF 60%, #F5E3BD 100%) !important;
+}
+
+.temple-layer-forest-cream {
+  background: linear-gradient(180deg, #FAF0DE 0%, #EFF4EE 50%, #F6ECE0 100%) !important;
+}
+
+/* Sacred Shloka Plaque in Hero */
+.sacred-shloka-frame {
+  background: linear-gradient(135deg, rgba(255, 253, 249, 0.95) 0%, rgba(250, 242, 228, 0.95) 100%) !important;
+  border: 1.5px solid rgba(197, 160, 89, 0.55) !important;
+  box-shadow: 0 4px 20px -2px rgba(121, 36, 37, 0.08), 0 2px 6px rgba(197, 160, 89, 0.12) !important;
+  position: relative;
+}
+
+.sacred-shloka-frame::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed rgba(197, 160, 89, 0.35);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Ornate Ornamental Section Divider */
+.ornate-gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.25rem auto;
+  max-width: 320px;
+}
+
+.ornate-gold-divider::before,
+.ornate-gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.75), transparent);
+}
+
+.ornate-gold-divider .divider-glyph {
+  font-size: 1.1rem;
+  color: #C5A059;
+  line-height: 1;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+}
+
+/* Secondary Maroon-Gold Outline Button */
+.btn-temple-maroon-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 253, 249, 0.9) !important;
+  color: #792425 !important;
+  border: 1.5px solid #792425 !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.85rem !important;
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 2px 8px rgba(121, 36, 37, 0.08) !important;
+  text-decoration: none;
+}
+
+.btn-temple-maroon-outline:hover {
+  background: #792425 !important;
+  color: #FFFDF9 !important;
+  box-shadow: 0 6px 18px rgba(121, 36, 37, 0.25) !important;
+  transform: translateY(-2px) !important;
+}
+
+
+
+/* Sacred Sanctum Maroon Layer (Dainik Sankalp / Sacred Mantra Atmosphere) */
+.temple-layer-sanctum {
+  background: radial-gradient(circle at 50% 25%, #3D1214 0%, #2B0C0D 65%, #1A0607 100%) !important;
+  color: #FFFDF9 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.temple-layer-sanctum::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 50% 20%, rgba(255, 215, 0, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(255, 140, 0, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 140, 0, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.temple-mantra-gold {
+  color: #FFD700 !important;
+  text-shadow: 0 0 16px rgba(255, 215, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.6) !important;
+}
+
+.temple-sanctum-card {
+  background: rgba(43, 12, 13, 0.65) !important;
+  border: 1px solid rgba(255, 215, 0, 0.35) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 215, 0, 0.2) !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease !important;
+}
+
+.temple-sanctum-card:hover {
+  transform: translateY(-5px) !important;
+  border-color: rgba(255, 215, 0, 0.85) !important;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* ========================================================================== */
+/* SERVICE PANELS (REFERENCE 2 COORDINATED TEMPLE PALETTE)                   */
+/* Distinctive cards with coordinated Dusty Rose, Maroon, Saffron, Gold & Green */
+/* ========================================================================== */
+
+.temple-service-panel {
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease !important;
+  text-decoration: none !important;
+  overflow: hidden;
+}
+
+.temple-service-panel:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px -6px rgba(121, 36, 37, 0.16), 0 0 20px rgba(255, 215, 0, 0.28) !important;
+}
+
+.temple-service-panel:focus-visible {
+  outline: 2px solid #FFD700 !important;
+  outline-offset: 3px !important;
+}
+
+/* 1. Deep Maroon Panel */
+.service-card-maroon {
+  background: linear-gradient(145deg, #FFF6F6 0%, #FAEBEC 55%, #F4D9DC 100%) !important;
+  border: 1.5px solid rgba(121, 36, 37, 0.32) !important;
+}
+.service-card-maroon:hover {
+  border-color: rgba(121, 36, 37, 0.85) !important;
+}
+
+/* 2. Saffron Orange Panel */
+.service-card-saffron {
+  background: linear-gradient(145deg, #FFF9F2 0%, #FDF0E1 55%, #FCE0C4 100%) !important;
+  border: 1.5px solid rgba(234, 88, 12, 0.32) !important;
+}
+.service-card-saffron:hover {
+  border-color: rgba(234, 88, 12, 0.85) !important;
+}
+
+/* 3. Warm Gold Panel */
+.service-card-gold {
+  background: linear-gradient(145deg, #FFFEF7 0%, #FCF5DF 55%, #F9EBC5 100%) !important;
+  border: 1.5px solid rgba(197, 160, 89, 0.40) !important;
+}
+.service-card-gold:hover {
+  border-color: rgba(255, 215, 0, 0.90) !important;
+}
+
+/* 4. Dusty Rose Panel */
+.service-card-rose {
+  background: linear-gradient(145deg, #FFF7F8 0%, #FAECF0 55%, #F5DDE4 100%) !important;
+  border: 1.5px solid rgba(190, 82, 107, 0.32) !important;
+}
+.service-card-rose:hover {
+  border-color: rgba(190, 82, 107, 0.85) !important;
+}
+
+/* 5. Royal Burgundy Panel */
+.service-card-burgundy {
+  background: linear-gradient(145deg, #FAF1F4 0%, #F3DFE7 55%, #E9C6D5 100%) !important;
+  border: 1.5px solid rgba(128, 0, 32, 0.32) !important;
+}
+.service-card-burgundy:hover {
+  border-color: rgba(128, 0, 32, 0.85) !important;
+}
+
+/* 6. Antique Amber Gold Panel */
+.service-card-amber {
+  background: linear-gradient(145deg, #FFFDF5 0%, #FAF0D6 55%, #F3E0B2 100%) !important;
+  border: 1.5px solid rgba(180, 83, 9, 0.35) !important;
+}
+.service-card-amber:hover {
+  border-color: rgba(180, 83, 9, 0.85) !important;
+}
+
+/* 7. Sacred Forest Emerald Panel */
+.service-card-emerald {
+  background: linear-gradient(145deg, #F5FAF7 0%, #E3F1E9 55%, #CEE5D8 100%) !important;
+  border: 1.5px solid rgba(27, 59, 43, 0.32) !important;
+}
+.service-card-emerald:hover {
+  border-color: rgba(27, 59, 43, 0.85) !important;
+}
+
+/* 8. Warm Ivory with Gold Border Panel */
+.service-card-ivory {
+  background: linear-gradient(145deg, #FFFFFF 0%, #FAF5EB 55%, #F2E8D5 100%) !important;
+  border: 1.5px solid rgba(197, 160, 89, 0.35) !important;
+}
+.service-card-ivory:hover {
+  border-color: rgba(255, 215, 0, 0.85) !important;
+}
+
+/* Service Card Roundel Icons */
+.service-roundel {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+.temple-service-panel:hover .service-roundel {
+  transform: scale(1.08);
+}
+
+/* Consecrated Royal Maroon Footer */
+.temple-footer-maroon {
+  background: linear-gradient(180deg, #501012 0%, #350A0B 100%) !important;
+  border-top: 2px solid #C5A059 !important;
+  box-shadow: 0 -4px 24px rgba(43, 12, 13, 0.25) !important;
 }

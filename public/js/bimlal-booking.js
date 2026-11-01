@@ -22,6 +22,7 @@
     const months = {
       mr: ['जानेवारी', 'फेब्रुवारी', 'मार्च', 'एप्रिल', 'मे', 'जून', 'जुलै', 'ऑगस्ट', 'सप्टेंबर', 'ऑक्टोबर', 'नोव्हेंबर', 'डिसेंबर'],
       hi: ['जनवरी', 'फरवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवंबर', 'दिसंबर'],
+      gu: ['જાન્યુઆરી', 'ફેબ્રુઆરી', 'માર્ચ', 'એપ્રિલ', 'મે', 'જૂન', 'જુલાઈ', 'ઓગસ્ટ', 'સપ્ટેમ્બર', 'ઓક્ટોબર', 'નવેમ્બર', 'ડિસેમ્બર'],
       en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     };
     const day = date.getDate();
@@ -79,7 +80,7 @@
       }
     }
 
-    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + svgDim + ' ' + svgDim + '" width="110" height="110" class="mx-auto rounded-lg p-1 bg-white border border-[#C5A059]/40 shadow-sm">' + rects + '</svg>';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + svgDim + ' ' + svgDim + '" width="110" height="110" class="mx-auto rounded-lg p-1 bg-[#FAF2E4] border border-[#C5A059]/40 shadow-sm">' + rects + '</svg>';
   }
 
   const BookingManager = {
@@ -231,14 +232,16 @@
       const total = this.state.generalCount + this.state.seniorCount + this.state.childCount;
       if (total === 0) {
         if (window.showDevoteeNotice) {
-          window.showDevoteeNotice('कृपया किमान एका भाविकाची निवड करा (Please select at least 1 devotee)', 'warning');
+          const msg = window.BimlalI18n ? window.BimlalI18n.get('booking_val_count') : 'कृपया किमान एका भाविकाची निवड करा';
+          window.showDevoteeNotice(msg, 'warning');
         }
         return;
       }
 
       if (!name) {
         if (window.showDevoteeNotice) {
-          window.showDevoteeNotice('कृपया प्रमुख भाविकाचे नाव प्रविष्ट करा (Please enter Lead Devotee name)', 'warning');
+          const msg = window.BimlalI18n ? window.BimlalI18n.get('booking_val_name') : 'कृपया प्रमुख भाविकाचे नाव प्रविष्ट करा';
+          window.showDevoteeNotice(msg, 'warning');
         }
         if (nameInput) nameInput.focus();
         return;
@@ -260,7 +263,8 @@
       }
 
       if (window.showDevoteeNotice) {
-        window.showDevoteeNotice('श्री शिव अर्धनरेश्वर दर्शन ई-पास तयार झाला आहे!', 'check_circle');
+        const msg = window.BimlalI18n ? window.BimlalI18n.get('pass_success_notice') : 'श्री शिव अर्धनरेश्वर दर्शन ई-पास तयार झाला आहे!';
+        window.showDevoteeNotice(msg, 'check_circle');
       }
     },
 
@@ -282,6 +286,10 @@
       const totalDevotees = this.state.generalCount + this.state.seniorCount + this.state.childCount;
       const qrPayload = this.state.bookingToken + '|' + this.state.date + '|' + this.state.slot + '|' + totalDevotees + '|' + this.state.leadName;
       const qrSvg = generateQRCodeSvg(qrPayload);
+
+      const genLabel = currentLang === 'en' ? 'Gen' : (currentLang === 'gu' ? 'સામાન્ય' : 'सामान्य');
+      const senLabel = currentLang === 'en' ? 'Senior' : (currentLang === 'gu' ? 'વરિષ્ઠ' : 'ज्येष्ठ');
+      const chiLabel = currentLang === 'en' ? 'Child' : (currentLang === 'gu' ? 'બાળક' : 'बाल');
 
       passContainer.innerHTML = `
         <div id="bimlal-darshan-pass-card" class="mt-8 p-6 sm:p-8 rounded-2xl bg-[#FBF9F5] border-2 border-[#C5A059] shadow-xl text-[#1C1917] max-w-xl mx-auto transition-all animate-fadeIn">
@@ -337,7 +345,7 @@
                 ${i18n.get('pass_devotees')}
               </span>
               <span class="font-semibold text-[#1C1917]">
-                ${totalDevotees} (${this.state.generalCount} Gen, ${this.state.seniorCount} Senior, ${this.state.childCount} Child)
+                ${totalDevotees} (${this.state.generalCount} ${genLabel}, ${this.state.seniorCount} ${senLabel}, ${this.state.childCount} ${chiLabel})
               </span>
             </div>
             <div class="sm:col-span-2">
